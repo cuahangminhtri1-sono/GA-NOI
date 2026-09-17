@@ -964,9 +964,12 @@ boot();
 .ms-send{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
 .ms-sb{flex:1;min-width:calc(50% - 4px);padding:12px 8px;border-radius:10px;border:0;font-size:13px;font-weight:800;text-align:center}
 .ms-sb:active{filter:brightness(1.2)}
+.ms-share{background:linear-gradient(90deg,#FF4500,#FF8C00);color:#fff;min-width:100%;font-size:14px;padding:14px 8px}
 .ms-zalo{background:#0068FF;color:#fff}
 .ms-sms{background:#22C55E;color:#fff}
+.ms-mail{background:#C0392B;color:#fff}
 .ms-copy{background:#333;color:#fff}
+.ms-hint{font-size:11px;color:#8a8a95;line-height:1.6;margin:8px 2px 0}
 .ms-call{background:#13131C;border:1px solid #555;color:#ccc}
 .ms-hook{background:#FF4500;color:#fff;min-width:100%}
 .ms-rst{display:block;background:none;border:0;color:#666;font-size:11px;margin:12px auto 0;text-decoration:underline}
@@ -981,7 +984,7 @@ boot();
 .ms-guide pre{background:#000;color:#9f9;padding:10px;border-radius:7px;overflow:auto;font-size:10.5px;line-height:1.55;margin:7px 0;white-space:pre}
 .ms-guide b{color:#ccc}
 </style>
-<button id="shopTogBtn" class="tog-btn" style="background:#FF4500;color:#fff;border:0">🛒 ĐẶT HÀNG · BÁN BUÔN (MT1–MT20 + MT21)</button>
+<button id="shopTogBtn" class="tog-btn" style="background:#FF4500;color:#fff;border:0">🛒 ĐẶT HÀNG · BÁN BUÔN (ĐỦ MT1–MT23)</button>
 <div id="mtshopArea" style="display:none"></div>
 
   <button id="schedTogBtn" class="tog-btn tog-schedule" onclick="toggleSched()">▼ XEM LỊCH ĐẦY ĐỦ 120 NGÀY</button>
@@ -1023,11 +1026,11 @@ const S=[
   {d:26,m:"MT2+MT3 (2/3)",e:"MT12 NHẸ",t:"ks",n:"MT2·0.04 + MT3·0.08 g/kg"},
   {d:27,m:"MT2+MT3 (3/3)",e:"MT12 NHẸ",t:"ks",n:"MT2·0.04 + MT3·0.08 g/kg"},
   {d:28,m:"MT8+MT9+MT11",e:"—",t:"hoi",n:"Hồi sau MT6"},
-  {d:29,m:"💉 VAC H5N1",e:"—",t:"vac",n:"⚠ KHÔNG THUỐC KHÁC"},
-  {d:30,m:"MT6 (1/2)",e:"MT12 NHẸ",t:"sg",n:"0.14 g/kg"},
-  {d:31,m:"MT6 (2/2)",e:"MT12 NHẸ",t:"sg",n:"0.14 g/kg"},
-  {d:32,m:"MT7 (1/2)",e:"MT12 NHẸ",t:"mtndz",n:"1 viên/8.3kg"},
-  {d:33,m:"MT7 (2/2)",e:"MT12 NHẸ",t:"mtndz",n:"1 viên/8.3kg"},
+  {d:29,m:"MT6 (1/2)",e:"💉 VAC H5N1",t:"vac",n:"Sáng uống MT6 · 0.14 g/kg · Chiều TIÊM VAC H5N1 · ⚠ không thêm thuốc khác"},
+  {d:30,m:"MT6 (2/2)",e:"MT12 NHẸ",t:"sg",n:"0.14 g/kg"},
+  {d:31,m:"MT7 (1/3)",e:"MT12 NHẸ",t:"mtndz",n:"1 viên/8.3kg"},
+  {d:32,m:"MT7 (2/3)",e:"MT12 NHẸ",t:"mtndz",n:"1 viên/8.3kg"},
+  {d:33,m:"MT7 (3/3)",e:"MT12 NHẸ",t:"mtndz",n:"1 viên/8.3kg"},
   {d:34,m:"MT8+MT9+MT11",e:"—",t:"hoi",n:"Hồi sau MT7"},
   {d:35,m:"MT1 (1/3)",e:"MT12 NHẸ",t:"ks",n:"0.11 g/kg"},
   {d:36,m:"MT1 (2/3)",e:"MT12 NHẸ",t:"ks",n:"0.11 g/kg"},
@@ -1355,9 +1358,10 @@ renderFlocks();
 (function(){
 "use strict";
 
-/* ====== CẤU HÌNH CHỦ SHOP — SỬA 3 DÒNG NÀY RỒI MỚI ĐĂNG WEB ====== */
+/* ====== CẤU HÌNH CHỦ SHOP — SỬA MẤY DÒNG NÀY RỒI MỚI ĐĂNG WEB ====== */
 var SHOP_NAME     = "MINH TRÍ";   /* tên cửa hàng */
 var SHOP_PHONE    = "0977823979";                    /* SĐT/Zalo nhận đơn */
+var SHOP_EMAIL    = "";                              /* (tùy chọn) email nhận đơn — để trống thì khách tự chọn người nhận */
 var ORDER_WEBHOOK = "";                              /* (tùy chọn) link Google Apps Script để tự lưu đơn vào Google Sheet */
 /* Bảng giá (tùy chọn). Để trống = "Liên hệ giá". Ví dụ:
    var PRICE = { MT3:{le:15000,si:13000}, MT8:{le:9000,si:8000} };  */
@@ -1430,12 +1434,15 @@ function shell(){
       '<div class="ms-flbl">Ghi chú (tùy chọn)</div><input class="ms-inp" id="msNoteIn" placeholder="VD: giao sáng, gối đầu tới mùa…" autocomplete="off">'+
       '<div class="ms-pre" id="msPre"></div>'+
       '<div class="ms-send">'+
+        '<button class="ms-sb ms-share" id="msShare">📤 GỬI ĐƠN — MỞ THẲNG APP (Zalo · Messenger · Gmail…)</button>'+
         '<button class="ms-sb ms-zalo" id="msZalo">💬 Gửi Zalo</button>'+
         '<button class="ms-sb ms-sms" id="msSms">✉️ Gửi SMS</button>'+
-        '<button class="ms-sb ms-copy" id="msCopy">📋 Copy đơn</button>'+
+        '<button class="ms-sb ms-mail" id="msMail">📧 Gửi Email</button>'+
         '<button class="ms-sb ms-call" id="msCall">📞 Gọi shop</button>'+
+        '<button class="ms-sb ms-copy" id="msCopy">📋 Copy đơn</button>'+
         (ORDER_WEBHOOK?'<button class="ms-sb ms-hook" id="msHook">🔗 Gửi đơn về shop (tự lưu)</button>':'')+
       '</div>'+
+      '<div class="ms-hint">📤 Bấm <b>MỞ THẲNG APP</b> → chọn Zalo / Messenger / Gmail / Tin nhắn… <b>đơn đã nằm sẵn trong khung chat</b>, chỉ việc bấm Gửi — không cần copy dán.</div>'+
       '<button class="ms-rst" id="msReset">Xóa hết đơn</button>'+
     '</div>'+
     guideHTML();
@@ -1541,6 +1548,39 @@ function copyText(t){
 }
 function fallbackCopy(t){try{var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=document.execCommand("copy");document.body.removeChild(ta);return ok;}catch(e){return false;}}
 
+/* ===== MỞ THẲNG APP (Web Share) — không copy/dán =====
+   PHẢI gọi ĐỒNG BỘ ngay trong cú chạm, không đặt trong .then() kẻo iOS mất user-gesture. */
+function hasShare(){try{return !!(typeof navigator!=="undefined"&&navigator.share);}catch(e){return false;}}
+function isIOS(){try{var u=navigator.userAgent||"";return /iP(hone|ad|od)/.test(u)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);}catch(e){return false;}}
+function copyOnly(txt,msg){
+  copyText(txt).then(function(ok){
+    toast(ok?(msg||"Máy chưa mở thẳng được app — đơn đã copy ✓, dán vào khung chat rồi gửi"):"Không copy được, hãy chọn & copy thủ công");
+  });
+}
+function zaloBackup(txt){
+  copyText(txt);
+  try{window.open("https://zalo.me/"+SHOP_PHONE.replace(/[^0-9]/g,""),"_blank");}catch(e){}
+  toast("Máy chưa mở thẳng được — đơn đã copy ✓, dán vào khung chat Zalo");
+}
+/* backup = hàm chạy khi máy KHÔNG hỗ trợ mở thẳng (hoặc bảng chia sẻ lỗi) */
+function shareOrder(backup){
+  var txt=orderText(), p=null;
+  if(hasShare()){
+    try{ p=navigator.share({title:"Đơn hàng "+SHOP_NAME,text:txt}); }catch(e){ p=null; }
+    if(p&&typeof p.then==="function"){
+      p.then(function(){ toast("Đã mở app — bấm Gửi là xong ✓"); },
+             function(err){
+               var n=(err&&err.name)||"";
+               if(n==="AbortError")return;           /* khách bấm Hủy — im lặng */
+               if(backup)backup(txt); else copyOnly(txt);
+             });
+      return true;
+    }
+  }
+  if(backup)backup(txt); else copyOnly(txt);
+  return false;
+}
+
 function needInfo(){
   var n=document.getElementById("msName"), p=document.getElementById("msPhone");
   var bad=false;
@@ -1602,18 +1642,24 @@ function bind(){
   ci("msName","name"); ci("msPhone","phone"); ci("msAddr","addr"); ci("msNoteIn","note");
   /* send */
   document.getElementById("msCopy").addEventListener("click",function(){copyText(orderText()).then(function(ok){toast(ok?"Đã copy đơn ✓ — dán vào Zalo/tin nhắn":"Không copy được, hãy chọn & copy thủ công");});});
+  document.getElementById("msShare").addEventListener("click",function(){
+    if(!needInfo())return;
+    shareOrder(null);
+  });
   document.getElementById("msZalo").addEventListener("click",function(){
     if(!needInfo())return;
-    copyText(orderText()).then(function(){
-      toast("Đơn đã copy ✓ — dán vào khung chat Zalo rồi gửi");
-      var ph=SHOP_PHONE.replace(/[^0-9]/g,"");
-      setTimeout(function(){window.open("https://zalo.me/"+ph,"_blank");},350);
-    });
+    /* Zalo không có link nhét sẵn nội dung → mở bảng chia sẻ, chọn Zalo là đơn nằm sẵn trong tin nhắn */
+    shareOrder(zaloBackup);
   });
   document.getElementById("msSms").addEventListener("click",function(){
     if(!needInfo())return;
     var ph=SHOP_PHONE.replace(/[^0-9+]/g,"");
-    window.location.href="sms:"+ph+"?body="+encodeURIComponent(orderText());
+    window.location.href="sms:"+ph+(isIOS()?"&":"?")+"body="+encodeURIComponent(orderText());
+  });
+  document.getElementById("msMail").addEventListener("click",function(){
+    if(!needInfo())return;
+    var sj="Đơn hàng "+(mode==="si"?"SỈ":"LẺ")+" — "+(cust.name||"")+(cust.phone?(" · "+cust.phone):"");
+    window.location.href="mailto:"+String(SHOP_EMAIL||"").trim()+"?subject="+encodeURIComponent(sj)+"&body="+encodeURIComponent(orderText());
   });
   document.getElementById("msCall").addEventListener("click",function(){
     window.location.href="tel:"+SHOP_PHONE.replace(/[^0-9+]/g,"");
@@ -1644,7 +1690,8 @@ function guideHTML(){
     '<li><b>GitHub Pages</b> (link cố định): tạo repo → upload file → Settings ▸ Pages ▸ chọn nhánh main → nhận link <code>tên.github.io</code>.</li>'+
     '<li><b>Cloudflare Pages</b>: tạo project → upload file → có link nhanh, ổn định.</li>'+
   '</ol>'+
-  '<p style="margin:8px 0">Gửi link đó cho khách qua Zalo/Facebook. Khách mở link, xem quy trình, chọn mã + số lượng, bấm <b>Gửi Zalo</b> → đơn về máy bạn.</p>'+
+  '<p style="margin:8px 0">Gửi link đó cho khách qua Zalo/Facebook. Khách mở link, xem quy trình, chọn mã + số lượng, bấm <b>📤 GỬI ĐƠN — MỞ THẲNG APP</b> → chọn Zalo/Messenger/Gmail, đơn đã nằm sẵn trong tin nhắn, bấm Gửi là đơn về máy bạn (không phải copy dán).</p>'+
+  '<p style="margin:8px 0"><b>Lưu ý:</b> nút <b>MỞ THẲNG APP</b> cần link <code>https</code> (Netlify / GitHub Pages / Cloudflare đều có sẵn). Nếu khách mở file trực tiếp từ máy hoặc dùng trình duyệt cũ, nút tự chuyển sang copy đơn để khách dán — không bị kẹt.</p>'+
   '<p style="margin:8px 0"><b>3) (Tùy chọn) Tự lưu đơn vào Google Sheet:</b></p>'+
   '<ol>'+
     '<li>Tạo 1 Google Sheet → menu <b>Tiện ích mở rộng ▸ Apps Script</b>.</li>'+
@@ -1663,7 +1710,7 @@ togBtn.addEventListener("click",function(){
   open=!open;
   if(open&&!built){shell();built=true;}
   area.style.display=open?"block":"none";
-  togBtn.textContent=open?"▲ ẨN ĐẶT HÀNG":"🛒 ĐẶT HÀNG · BÁN BUÔN (MT1–MT20 + MT21)";
+  togBtn.textContent=open?"▲ ẨN ĐẶT HÀNG":"🛒 ĐẶT HÀNG · BÁN BUÔN (ĐỦ MT1–MT23)";
   if(open)area.scrollIntoView({behavior:"smooth",block:"start"});
 });
 
