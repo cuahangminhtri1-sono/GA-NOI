@@ -120,7 +120,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 .pwa-ok:active{transform:scale(.98)}
 </style>
 <style id="gnp-css">
-/* ═════ [GNP3] GÀ NÒI QT BẢN BÁN — cổng tài khoản (đăng nhập · dùng thử · gia hạn) · màu theo app (nền tối, cam) ═════ */
+/* ═════ [GNP4] GÀ NÒI QT BẢN BÁN — cổng tài khoản (đăng nhập · dùng thử · gia hạn) · màu theo app (nền tối, cam) ═════ */
 #gnp-gate,#gnp-mask,#gnp-bar,#gnp-toast,#gnp-acc{--g-bg:#0A0A0F;--g-sf:#13131C;--g-sf2:#1B1B27;--g-ln:#2C2C3B;--g-ink:#F2F2F6;--g-mu:#9C9CAD;--g-ac:#FF4500;--g-ac2:#FF8C00;--g-ok:#22C55E;--g-vg:#FFB347;--g-do:#EF4444}
 #gnp-gate{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2147483000;background:var(--g-bg);color:var(--g-ink);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;font-family:system-ui,sans-serif;font-size:15px;line-height:1.45;text-align:left}
 #gnp-gate.gnp-on{display:block}
@@ -209,7 +209,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 </style>
 </head>
 <body>
-<!-- ═════ [GNP3] GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN: che app cho tới khi biết chắc tài khoản còn hạn ═════ -->
+<!-- ═════ [GNP4] GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN: che app cho tới khi biết chắc tài khoản còn hạn ═════ -->
 <div id="gnp-gate" class="gnp-on" role="dialog" aria-modal="true" aria-label="Tài khoản Gà Nòi QT"><div class="gnp-box"><div class="gnp-logo">GÀ NÒI <i>QT</i></div><div id="gnp-body"><p class="gnp-mo">Đang mở…</p></div></div></div>
 <script>(function(){
   'use strict';
@@ -4859,10 +4859,10 @@ if(D.readyState === 'loading') D.addEventListener('DOMContentLoaded', khoiDong);
 </script>
 <!-- ===== HẾT PHẦN NHẮC LỊCH ===== -->
 
-<!-- ═════ [GNP3] GÀ NÒI QT BẢN BÁN — tài khoản · dùng thử · gia hạn · tin từ xa · hộp thư hỗ trợ (chỉ thêm, không sửa dòng nào của app) ═════ -->
+<!-- ═════ [GNP4] GÀ NÒI QT BẢN BÁN — tài khoản · dùng thử · gia hạn · tin từ xa · hộp thư hỗ trợ (chỉ thêm, không sửa dòng nào của app) ═════ -->
 <script type="module">
 /* ══════════════════════════════════════════════════════════════════════════════════════════
-   GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN (bản 2026-11-19-GNP3)
+   GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN (bản 2026-11-19-GNP4)
    Ghép với app Quản Trị y như Sổ Nợ, Cân Gà Pro — chung Firebase so-no-cc57a:
      • Giấy phép   accounts/{uid}/lic/ganoi        (dùng thử tự mở · Quản Trị gia hạn / khoá / vĩnh viễn)
      • Khoá thử    trialKeys/{hộp thư thật}         (mỗi hộp thư dùng thử 1 lần — Rules VÁ LỖ Z3/Z6/Z7)
@@ -4884,7 +4884,7 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimesta
   from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 window.__gnpChay = true;
-const APP = "ganoi", TEN = "Gà Nòi QT", APP_VER = "2026-11-19-GNP3";
+const APP = "ganoi", TEN = "Gà Nòi QT", APP_VER = "2026-11-19-GNP4";
 const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
   projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
   messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
@@ -5150,7 +5150,7 @@ async function dangXuat(){
    Kho payments (sổ doanh thu) chỉ chủ phần mềm đọc được (Rules isAdmin: đúng email chủ + đăng nhập mật khẩu).
    Đọc thử 1 ô không có thật: chủ ⇒ đọc được (không có gì) · khách ⇒ máy chủ chối · mất mạng ⇒ chưa biết (giữ như lần trước). */
 function kiemChu(u){
-  return getDoc(doc(db, "payments", "__gnp_kiem_chu__")).then(() => true, e => (e && e.code === "permission-denied") ? false : null)
+  return getDoc(doc(db, "payments", "gnp_kiem_chu")).then(() => true, e => (e && e.code === "permission-denied") ? false : null)   /* [GNP4] tên ô KHÔNG được dạng __…__ (Firestore cấm ⇒ máy chủ trả invalid-argument ⇒ ai cũng kẹt màn "mạng yếu") */
     .then(v => { if(G.u === u){ if(v !== null) G.ad = v; G.adXong = true; } return v; });
 }
 
@@ -5823,7 +5823,7 @@ setInterval(() => { if(!document.hidden && G.u){ danhGia(); if(Date.now() - (G.l
 <script type="module">
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-const APP_ID = "ganoi", APP_VERSION = "2026-11-19-GNP3";   /* = APP_VER của cổng tài khoản (số bản app Quản Trị đọc) */
+const APP_ID = "ganoi", APP_VERSION = "2026-11-19-GNP4";   /* = APP_VER của cổng tài khoản (số bản app Quản Trị đọc) */
 const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
   projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
   messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
@@ -5881,6 +5881,6 @@ if (!window.__ERR_LOG__) {
   window.baoLoi = (err, ghiChu) => send("manual", { message: (ghiChu ? ghiChu + ": " : "") + ((err && err.message) || String(err)), stack: err && err.stack });
 }
 </script>
-<!-- ===== HẾT PHẦN TÀI KHOẢN GÀ NÒI QT BẢN BÁN [GNP3] ===== -->
+<!-- ===== HẾT PHẦN TÀI KHOẢN GÀ NÒI QT BẢN BÁN [GNP4] ===== -->
 </body>
 </html>
