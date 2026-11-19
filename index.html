@@ -119,8 +119,212 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 .pwa-ok{width:100%;margin-top:14px;padding:12px;border:0;border-radius:10px;background:linear-gradient(145deg,#FF8C00,#FF4500);color:#fff;font-weight:900;font-size:13px;letter-spacing:.6px}
 .pwa-ok:active{transform:scale(.98)}
 </style>
+<style id="gnp-css">
+/* ═════ [GNP3] GÀ NÒI QT BẢN BÁN — cổng tài khoản (đăng nhập · dùng thử · gia hạn) · màu theo app (nền tối, cam) ═════ */
+#gnp-gate,#gnp-mask,#gnp-bar,#gnp-toast,#gnp-acc{--g-bg:#0A0A0F;--g-sf:#13131C;--g-sf2:#1B1B27;--g-ln:#2C2C3B;--g-ink:#F2F2F6;--g-mu:#9C9CAD;--g-ac:#FF4500;--g-ac2:#FF8C00;--g-ok:#22C55E;--g-vg:#FFB347;--g-do:#EF4444}
+#gnp-gate{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2147483000;background:var(--g-bg);color:var(--g-ink);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;font-family:system-ui,sans-serif;font-size:15px;line-height:1.45;text-align:left}
+#gnp-gate.gnp-on{display:block}
+#gnp-gate .gnp-box{max-width:440px;margin:0 auto;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(30px + env(safe-area-inset-bottom,0px))}
+.gnp-logo{font-weight:900;font-size:27px;letter-spacing:2px;text-align:center;margin:8px 0 2px;color:#fff}
+.gnp-logo i{font-style:normal;color:var(--g-ac)}
+.gnp-sub{text-align:center;color:var(--g-mu);font-size:13px;margin:0 0 12px}
+.gnp-card{background:var(--g-sf);border:1px solid var(--g-ln);border-radius:14px;padding:12px 14px;margin:10px 0}
+.gnp-f{display:flex;flex-direction:column;gap:4px;margin:0 0 10px}
+.gnp-f label{font-size:12px;color:var(--g-mu);font-weight:700}
+.gnp-f input,.gnp-f textarea{width:100%;min-width:0;border:2px solid var(--g-ln);background:var(--g-bg);color:var(--g-ink);border-radius:10px;padding:11px 12px;font:inherit;font-size:16px;outline:none}
+.gnp-f input:focus,.gnp-f textarea:focus{border-color:var(--g-ac2)}
+.gnp-b{display:block;width:100%;border:1px solid var(--g-ln);background:var(--g-sf2);color:var(--g-ink);border-radius:12px;padding:12px 14px;font:inherit;font-weight:800;font-size:15px;margin:8px 0 0;text-align:center;text-decoration:none;cursor:pointer}
+.gnp-b.pri{background:linear-gradient(135deg,var(--g-ac),var(--g-ac2));border-color:var(--g-ac);color:#fff}
+.gnp-b.ok{background:var(--g-ok);border-color:var(--g-ok);color:#06210f}
+.gnp-b.nhe{background:transparent;border-color:transparent;color:var(--g-mu);font-weight:700}
+.gnp-b[disabled]{opacity:.55}
+.gnp-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--g-bg);border:1px solid var(--g-ln);padding:4px;border-radius:12px;margin:0 0 12px}
+.gnp-tabs button{border:0;border-radius:9px;padding:9px 4px;font:inherit;font-weight:800;background:transparent;color:var(--g-mu);cursor:pointer}
+.gnp-tabs button.gnp-chon{background:var(--g-sf2);color:var(--g-ac2)}
+.gnp-mo{text-align:center;color:var(--g-mu);padding:26px 0;margin:0}
+.gnp-hint{font-size:12.5px;color:var(--g-mu);line-height:1.55;margin:8px 0}
+.gnp-hint a{color:inherit;font-weight:800}
+.gnp-bao{border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.5;margin:10px 0}
+.gnp-bao.x{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.45);color:#FECACA}
+.gnp-bao.v{background:rgba(255,179,71,.10);border:1px solid rgba(255,179,71,.45);color:#FFE2B8}
+.gnp-bao.ok{background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.45);color:#C9F7D9}
+.gnp-kv{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid var(--g-ln);font-size:14px}
+.gnp-kv:first-child{border-top:0}
+.gnp-kv>span{color:var(--g-mu);flex:none}
+.gnp-kv>b{text-align:right;word-break:break-word;font-weight:800}
+.gnp-cp{border:0;border-radius:7px;padding:2px 8px;margin-left:6px;font:inherit;font-size:12px;font-weight:800;background:var(--g-ln);color:var(--g-ink);cursor:pointer;vertical-align:middle}
+.gnp-thang{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0 10px}
+.gnp-thang button{border:1px solid var(--g-ln);background:var(--g-sf2);color:var(--g-ink);border-radius:10px;padding:9px 2px;font:inherit;font-weight:800;font-size:13.5px;cursor:pointer}
+.gnp-thang button.gnp-chon{background:var(--g-ac2);color:#141414;border-color:var(--g-ac2)}
+.gnp-qr{text-align:center;margin:8px 0}
+.gnp-qr img{width:220px;max-width:78%;height:auto;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--g-ln)}
+.gnp-tong{font-size:15px;font-weight:800;margin:4px 0}
+.gnp-tong b{font-size:23px;color:var(--g-ac2);font-family:monospace}
+.gnp-tong small{font-weight:600;color:var(--g-mu);font-size:12px}
+.gnp-km{background:rgba(255,140,0,.12);border:1px solid rgba(255,140,0,.5);color:#FFD08A;border-radius:9px;padding:7px 10px;font-size:13px;font-weight:800;margin:6px 0;line-height:1.45}
+.gnp-km s{font-weight:600;opacity:.75}
+#gnp-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:2147483600;background:var(--g-ink);color:var(--g-bg);padding:10px 16px;border-radius:999px;font:700 14px system-ui,sans-serif;max-width:90%;text-align:center;pointer-events:none;box-shadow:0 6px 22px rgba(0,0,0,.45)}
+#gnp-toast[hidden]{display:none!important}
+#gnp-bar{position:fixed;left:0;right:0;top:0;z-index:2147483300;display:flex;align-items:center;gap:9px;padding:calc(9px + env(safe-area-inset-top,0px)) 12px 9px;font:700 13.5px/1.45 system-ui,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.45);text-align:left}
+#gnp-bar.tin{background:#1d4ed8;color:#fff}
+#gnp-bar.rl{background:#e67e22;color:#141414}
+#gnp-bar.ht{background:#15803d;color:#fff}
+#gnp-bar .t{flex:1;min-width:0;word-break:break-word}
+#gnp-bar button{flex:none;border:0;border-radius:8px;padding:7px 11px;font:800 12.5px system-ui,sans-serif;cursor:pointer;background:rgba(255,255,255,.92);color:#141414}
+#gnp-bar button.x{background:transparent;color:inherit;font-size:17px;padding:4px 6px}
+#gnp-mask{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2147483500;background:rgba(0,0,0,.68);display:flex;align-items:center;justify-content:center;padding:14px;font-family:system-ui,sans-serif;text-align:left}
+#gnp-mask .gnp-c{background:var(--g-sf);color:var(--g-ink);border:1px solid var(--g-ln);border-radius:16px;max-width:440px;width:100%;max-height:92vh;max-height:92dvh;overflow:auto;overscroll-behavior:contain;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.55);font-size:15px;line-height:1.45}
+#gnp-mask h4{margin:0 0 8px;font-size:16px}
+#gnp-mask p{margin:0 0 6px}
+#gnp-mask .gnp-tx{white-space:pre-wrap;word-break:break-word}
+.gnp-hd{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.gnp-hd b{flex:1;font-size:15.5px}
+.gnp-xb{border:0;background:var(--g-ln);color:var(--g-ink);border-radius:9px;width:34px;height:34px;font-size:16px;cursor:pointer;flex:none}
+.gnp-ve{border:1px solid var(--g-ln);border-radius:11px;padding:9px 11px;margin:0 0 7px;cursor:pointer;background:var(--g-bg)}
+.gnp-ve b{display:block;font-size:14px;word-break:break-word}
+.gnp-ve small{color:var(--g-mu);font-size:12px}
+.gnp-ve.moi{border-color:var(--g-ok);box-shadow:inset 3px 0 0 var(--g-ok)}
+.gnp-bb{border-radius:12px;padding:8px 11px;margin:0 0 7px;max-width:86%;white-space:pre-wrap;word-break:break-word;font-size:14px}
+.gnp-bb small{display:block;color:var(--g-mu);font-size:11px;margin-top:3px}
+.gnp-bb.gnp-bk{background:var(--g-ln);margin-left:auto}
+.gnp-bb.gnp-bq{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.38)}
+.gnp-htb{max-height:48vh;overflow-y:auto;overscroll-behavior:contain;margin:0 0 8px}
+.gnp-cham{color:var(--g-ok);font-weight:800}
+.gnp-2{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
+.gnp-hdan{margin:12px 0 0;border:1px solid var(--g-ln);border-radius:12px;background:var(--g-bg)}
+.gnp-hdan summary{cursor:pointer;padding:10px 12px;font-weight:800;font-size:14px;list-style:none}
+.gnp-hdan summary::-webkit-details-marker{display:none}
+.gnp-hdan[open] summary{border-bottom:1px solid var(--g-ln)}
+.gnp-hdan .gnp-hb{padding:4px 12px 10px;font-size:13.5px;line-height:1.55;color:#D6D6DE}
+.gnp-hdan .gnp-hb p{margin:8px 0 0}
+.gnp-hdan .gnp-hb b{color:#fff}
+#gnp-acc{display:flex;align-items:center;gap:10px;background:var(--g-sf);border:1px solid var(--g-ln);border-radius:12px;padding:9px 10px 9px 12px;margin:0 0 12px;font-size:12.5px;line-height:1.4;color:#D8D8E0;text-align:left}
+#gnp-acc[hidden]{display:none!important}
+#gnp-acc .t{flex:1;min-width:0}
+#gnp-acc .t b{display:block;font-size:13px;color:#fff;word-break:break-all}
+#gnp-acc .t span{color:var(--g-mu)}
+#gnp-acc.sap{border-color:var(--g-ac2)}
+#gnp-acc.sap .t span{color:var(--g-vg);font-weight:700}
+#gnp-acc button{flex:none;border:1px solid var(--g-ac2);background:transparent;color:var(--g-ac2);border-radius:9px;padding:8px 10px;font-weight:800;font-size:12px;letter-spacing:.5px;cursor:pointer}
+</style>
 </head>
 <body>
+<!-- ═════ [GNP3] GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN: che app cho tới khi biết chắc tài khoản còn hạn ═════ -->
+<div id="gnp-gate" class="gnp-on" role="dialog" aria-modal="true" aria-label="Tài khoản Gà Nòi QT"><div class="gnp-box"><div class="gnp-logo">GÀ NÒI <i>QT</i></div><div id="gnp-body"><p class="gnp-mo">Đang mở…</p></div></div></div>
+<script>(function(){
+  'use strict';
+  /* Trạng thái giấy phép — chép đúng tt() của app Quản Trị và conHan() của Firestore Rules:
+     khoá (active:false) · vĩnh viễn · chưa đặt hạn / hạn sai kiểu · hết hạn · dùng thử · đã trả tiền.
+     l = { active, vinhVien, han (mili-giây | null), trial, sai } ; now = giờ dùng để xét (đã chống vặn lùi). */
+  var N=864e5;
+  function trangThai(l,now){
+    if(!l) return {ma:'chua'};
+    if(l.active===false) return {ma:'khoa'};
+    if(l.vinhVien===true) return {ma:'vv'};
+    var h=(typeof l.han==='number'&&isFinite(l.han))?l.han:null;
+    if(h==null) return {ma:l.sai?'sai':'trong'};
+    var d0=new Date(now); d0.setHours(0,0,0,0);
+    var con=Math.floor((h-d0.getTime())/N);
+    if(h<=now) return {ma:'het',con:con,han:h};
+    return {ma:l.trial===true?'thu':'tra',con:con,han:h};
+  }
+  function con(st){ return !!st&&(st.ma==='vv'||st.ma==='tra'||st.ma==='thu'||st.ma==='admin'); }
+  function ymd(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  /* Quyền nhận THÔNG BÁO NHẮC LỊCH theo giấy phép: tudo = không giới hạn · cat = chỉ tới hết ngày hạn · tat = gỡ máy khỏi máy chủ nhắc lịch */
+  function quyenTuSt(st){
+    if(!st) return null;
+    if(st.ma==='admin'||st.ma==='vv') return {ma:'tudo'};
+    if((st.ma==='thu'||st.ma==='tra')&&st.han) return {ma:'cat',cut:ymd(new Date(st.han))};
+    return {ma:'tat'};
+  }
+  window.GNP_ST={trangThai:trangThai,con:con,quyenTuSt:quyenTuSt};
+  /* Giấy phép lưu máy còn dùng được không (đúng tài khoản, máy chủ xác nhận trong 7 ngày, giờ máy không bị vặn lùi) */
+  function gpMay(){
+    try{
+      var g=JSON.parse(localStorage.getItem('gnp_gp_v1')||'null');
+      if(!g||!g.uid) return null;
+      var ver=Number(g.ver)||0, now=Math.max(Date.now(),ver);
+      if(Date.now()<ver-2*3600e3 || now-(Number(g.ok)||0)>7*N) return null;
+      return {g:g,st:g.admin?{ma:'admin'}:trangThai(g.l,now)};
+    }catch(e){ return null; }
+  }
+  /* MỞ NHANH: máy đã có giấy phép còn hạn của lần trước ⇒ mở app ngay, không chờ mạng.
+     Firebase nạp xong sẽ kiểm lại — hết hạn / bị khoá là che lại. */
+  try{
+    var gm=gpMay();
+    if(gm&&con(gm.st)){ document.getElementById('gnp-gate').className=''; window.__gnpMoNhanh=gm.g.uid; }
+  }catch(e){}
+  /* Thư viện không nạp được (lần đầu mở mà mất mạng) ⇒ đừng để màn "Đang mở…" đứng mãi */
+  setTimeout(function(){
+    if(window.__gnpChay) return;
+    var gt=document.getElementById('gnp-gate'), b=document.getElementById('gnp-body');
+    if(!gt||!b||gt.className!=='gnp-on'||!/Đang mở/.test(b.textContent||'')) return;
+    b.innerHTML='<div class="gnp-bao v">Chưa tải được phần đăng nhập — máy đang mất mạng hoặc mạng yếu.<br>Nối mạng rồi bấm <b>Thử lại</b>. Lần đầu dùng cần có mạng; sau đó mất mạng vẫn tra lịch, tính liều, cân gà được.</div>'
+      +'<button class="gnp-b pri" type="button" onclick="location.reload()">Thử lại</button>'
+      +'<p class="gnp-hint" style="text-align:center">Cần hỗ trợ: <a href="tel:0977823979">📞 0977 823 979</a></p>';
+  },15000);
+  /* Chrome mời "cài app" ⇒ giữ lại để nút 📲 trong cổng / thẻ Tài khoản dùng (thanh CÀI ĐẶT có sẵn của app vẫn chạy như cũ) */
+  window.addEventListener('beforeinstallprompt',function(e){ window.__gnpCai=e; try{document.dispatchEvent(new Event('gnp-cai'))}catch(x){} });
+  window.addEventListener('appinstalled',function(){ window.__gnpCai=null; try{document.dispatchEvent(new Event('gnp-cai'))}catch(x){} });
+
+  /* ═══ CHẶN NHẮC LỊCH VƯỢT HẠN DÙNG ═══
+     Khối nhắc lịch [NL1] gửi lịch 120 ngày lên máy chủ "nhaclich" (nlDangKy, viec 'dk'). Bản bán chỉ cho máy chủ giữ lịch
+     tới HẾT NGÀY HẠN của tài khoản ⇒ dùng thử xong / hết hạn thì thông báo tự dừng, gia hạn xong mở app là lịch được gửi lại.
+     Hết hạn · bị khoá · đã đăng xuất ⇒ gỡ máy khỏi máy chủ nhắc lịch (viec 'tat'). KHÔNG sửa dòng nào của khối [NL1]:
+     chỉ soát đúng 1 loại lệnh gửi (POST 'dk' tới nlDangKy); mọi lệnh khác (tắt, gửi thử, lấy cấu hình) đi thẳng như cũ. */
+  var NL_URL='https://asia-southeast1-so-no-cc57a.cloudfunctions.net/nlDangKy', K_NL='gnp_nl_v1';
+  var gocFetch=window.fetch;
+  function quyenNL(){ try{ if(typeof window.__gnpQuyenNL==='function'){ var q=window.__gnpQuyenNL(); if(q&&q.ma) return q; } }catch(e){} return {ma:'cho'}; }
+  function choQuyen(sig){
+    return new Promise(function(ok){
+      var t0=Date.now();
+      (function vong(){
+        var q=quyenNL();
+        if(q.ma!=='cho') return ok(q);
+        if(sig&&sig.aborted) return ok({ma:'huy'});
+        if(Date.now()-t0>15000){ var gm=gpMay(); return ok((gm&&quyenTuSt(gm.st))||{ma:'chan'}); }
+        setTimeout(vong,300);
+      })();
+    });
+  }
+  function ghiNL(k,may){ try{ localStorage.setItem(K_NL,JSON.stringify({k:k,may:String(may||''),luc:Date.now()})); }catch(e){} }
+  function guiNL(j,init){
+    return choQuyen(init.signal).then(function(q){
+      if(q.ma==='huy'){ var ab; try{ ab=new DOMException('The operation was aborted.','AbortError'); }catch(x){ ab=new Error('aborted'); ab.name='AbortError'; } throw ab; }
+      if(q.ma==='chan') throw new TypeError('Failed to fetch');
+      if(q.ma==='tudo') return gocFetch.call(window,NL_URL,init).then(function(r){ if(r&&r.ok) ghiNL('tudo',j.may); return r; });
+      var lich={}, n=0, k;
+      if(q.ma==='cat'){ for(k in j.lich){ if(Object.prototype.hasOwnProperty.call(j.lich,k)&&String(k)<=q.cut){ lich[k]=j.lich[k]; n++; } } }
+      var khoa=q.ma==='cat'?'cat:'+q.cut:'tat';
+      if(n>0){
+        var j2={}, i2={}, x;
+        for(x in j) if(Object.prototype.hasOwnProperty.call(j,x)) j2[x]=j[x];
+        j2.lich=lich;
+        for(x in init) if(Object.prototype.hasOwnProperty.call(init,x)) i2[x]=init[x];
+        i2.body=JSON.stringify(j2);
+        return gocFetch.call(window,NL_URL,i2).then(function(r){ if(r&&r.ok) ghiNL(khoa,j.may); return r; });
+      }
+      /* không còn ngày nào được báo ⇒ gỡ máy này khỏi máy chủ nhắc lịch, báo lại cho khối nhắc lịch là đã xong (0 ngày) */
+      return gocFetch.call(window,NL_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify({v:1,viec:'tat',may:j.may}),cache:'no-store',signal:init.signal})
+        .then(function(r){
+          if(!r||!r.ok) return r;
+          ghiNL(khoa,j.may);
+          return new Response(JSON.stringify({ok:true,so:0,gnp:'ngoai-han'}),{status:200,headers:{'Content-Type':'application/json'}});
+        });
+    });
+  }
+  if(typeof gocFetch==='function'){
+    window.fetch=function(input,init){
+      var u='';
+      try{ u=(typeof input==='string')?input:((input&&input.url)||''); }catch(e){ u=''; }
+      if(u.indexOf(NL_URL)===0&&init&&String(init.method||'').toUpperCase()==='POST'&&typeof init.body==='string'){
+        var j=null; try{ j=JSON.parse(init.body); }catch(e){ j=null; }
+        if(j&&j.viec==='dk'&&j.lich&&typeof j.lich==='object') return guiNL(j,init);
+      }
+      return gocFetch.apply(window,arguments);
+    };
+  }
+})();</script>
 <div class="wrap">
   <div class="title">V7 · GÀ NÒI · KHÓA 6 BỆNH · TRA THUỐC + TÍNH LIỀU</div>
   <div class="subtitle">KHÓA 6/6 · MT21 N72-73·93-94·109-110 · MT6→MT7 cặp · MT2 N74-75</div>
@@ -4084,7 +4288,7 @@ var NLC = (function(){
 })();
 
 /* ---------- [NL1] GIAO DIỆN + THÔNG BÁO ĐẨY ---------- */
-var NL_VER   = '2026-11-19-NL2';
+var NL_VER   = '2026-11-19-NL3';
 /* [NL2] Kho "firebase-messaging-database" trong trình duyệt là CHUNG cả tên miền github.io (Sổ Nợ, Quản Trị, Gà Nòi…):
    Firebase 12.x (app Quản Trị) nâng kho lên bản 2; Firebase 10.12.0 (Sổ Nợ, Gà Nòi NL1) chỉ mở được bản 1
    ⇒ máy đã mở Quản Trị thì báo "The requested version (1) is less than the existing version (2)".
@@ -4277,12 +4481,13 @@ function chuTT(){
 
 /* ═════════ BẢNG ⚙ THÔNG BÁO ═════════ */
 var HUONG_DAN = '<p><b>Báo cái gì?</b> Mỗi đàn đã lưu (ngày vào gà + số con) có 1 thông báo mỗi tối: ngày mai Sáng làm gì, Chiều làm gì. <b>Ngày đầu của một đợt</b> có kèm <b>liều 1 ngày</b>, tính y như Máy tính liều PRO (số con × cân nặng chuẩn của ngày đó). Ngày 2, 3… của đợt chỉ nhắc tên — bạn tự tính.</p>'
-  + '<p><b>Đổi số con / ngày vào gà:</b> sửa đàn ở mục 🐔 ĐÀN GÀ ĐÃ LƯU — app tự gửi lịch mới lên máy chủ (cần có mạng). Xoá đàn là thôi báo đàn đó.</p>'
+  + '<p><b>Thêm đàn / đổi số con / đổi ngày vào gà / xoá đàn:</b> làm ở mục 🐔 ĐÀN GÀ ĐÃ LƯU — vài giây sau app tự gửi lịch mới lên máy chủ (cần có mạng; mất mạng thì khi có mạng lại hoặc mở lại app sẽ tự gửi). Sửa <b>sau</b> giờ báo của tối đó thì tin tối đó đã gửi theo số cũ — từ tối hôm sau theo số mới (khung NGÀY MAI LÀM GÌ đổi ngay).</p>'
+  + '<p><b>App có bản mới (đổi lịch 120 ngày, đổi liều…):</b> mở app 1 lần khi có mạng là app tự gửi lịch mới. Máy nào chưa mở thì thông báo có thêm dòng ⚠ nhắc mở app.</p>'
   + '<p><b>Android:</b> mở app bằng Chrome (hoặc app đã cài ra màn hình chính) → 🔔 BẬT THÔNG BÁO → Cho phép.</p>'
   + '<p><b>iPhone / iPad:</b> mở bằng Safari → nút Chia sẻ ⬆️ → “Thêm vào MH chính”, rồi mở app từ biểu tượng đó mới bật được (iOS 16.4 trở lên).</p>'
   + '<p><b>Thử:</b> bấm 📲 GỬI THỬ → có thông báo 1/2 ngay → tắt hẳn app → khoảng 20 giây sau có thông báo 2/2. Có đủ 2 cái là máy đã nhận được.</p>'
   + '<p><b>Không thấy báo:</b> Cài đặt điện thoại → Ứng dụng → Chrome (hoặc ' + esc(TEN_APP) + ') → Thông báo: bật. Tắt chế độ tiết kiệm / tối ưu pin cho Chrome. Lúc tới giờ máy phải có mạng — mất mạng thì có mạng lại sẽ nhận (trễ nhất 6 giờ sáng hôm sau).</p>'
-  + '<p><b>Thỉnh thoảng mở app khi có mạng</b> để lịch trên máy chủ luôn theo bản mới nhất của app.</p>';
+  + '<p><b>Không cần mở app mỗi ngày:</b> máy chủ đã giữ lịch cả đợt nuôi, tối nào cũng tự báo.</p>';
 var mask = null;
 function dungBang(){
   if(mask && D.body.contains(mask)) return mask;
@@ -4347,6 +4552,7 @@ function veXemTruoc(){
   if(!S_ || !W_){ el.innerHTML = ''; el._nl = ''; return; }
   if(!ds.length){ el.innerHTML = '<div class="nl-nho">Chưa có đàn nào — lưu đàn ở mục 🐔 ĐÀN GÀ ĐÃ LƯU.</div>'; el._nl = ''; return; }
   var hn = NLC.nuaDem(new Date()), keys = []; for(i = 0; i < 7; i++) keys.push(NLC.ymd(NLC.cong(hn, i)));
+  var bayGio = new Date(), daQua = (bayGio.getHours() * 60 + bayGio.getMinutes()) > st.gio * 60;   /* [NL3] giờ báo tối nay đã qua */
   for(i = 0; i < ds.length; i++){
     var f = ds[i], L = [];
     try{ L = NLC.soanDan(S_, W_, IT, f, cf).filter(function(e){ return keys.indexOf(e.ngay) >= 0; }); }catch(e){ L = []; }
@@ -4354,7 +4560,7 @@ function veXemTruoc(){
     if(!L.length) html += '<div class="nl-nho">Không có lịch trong 7 ngày tới.</div>';
     for(j = 0; j < L.length; j++){
       var e = L[j], p = e.ngay.split('-'), toi = new Date(+p[0], +p[1] - 1, +p[2]), mai = NLC.cong(toi, 1);
-      html += '<div class="nl-xi"><div class="nl-xg">TỐI ' + (e.ngay === keys[0] ? 'NAY' : esc(NLC.thu(toi)).toUpperCase()) + ', ' + NLC.ddmm(toi) + ' · ' + hai(st.gio) + ':00 → MAI N' + e.N + ' (' + esc(NLC.thu(mai)) + ', ' + NLC.ddmm(mai) + ')</div>'
+      html += '<div class="nl-xi"><div class="nl-xg">TỐI ' + (e.ngay === keys[0] ? 'NAY' : esc(NLC.thu(toi)).toUpperCase()) + ', ' + NLC.ddmm(toi) + ' · ' + hai(st.gio) + ':00' + ((e.ngay === keys[0] && daQua) ? ' (đã qua)' : '') + ' → MAI N' + e.N + ' (' + esc(NLC.thu(mai)) + ', ' + NLC.ddmm(mai) + ')</div>'
         + '<div class="nl-xb">' + e.b.split('\n').map(dongHTML).join('') + '</div></div>';
     }
   }
@@ -4482,14 +4688,24 @@ function goiMayChu(than){
 }
 
 /* ───────── soạn lịch gửi lên ───────── */
+/* [NL3] Dấu BẢN APP đang chạy = giờ sửa tệp index.html trên GitHub (Last-Modified của chính trang này), dạng "v<giây base36>".
+   Gắn vào đuôi tag mỗi tin ⇒ nhaclich-sw.js lúc nhận tin hỏi GitHub: tệp đã mới hơn ⇒ app có bản mới (vd đổi lịch 120 ngày)
+   mà máy này chưa mở ⇒ thêm dòng ⚠ nhắc mở app. Trang không có Last-Modified (trình duyệt trả giờ hiện tại) ⇒ không gắn. */
+function dauBan(){
+  try{
+    var t = Date.parse(D.lastModified);
+    if(!isFinite(t) || t < 1700000000000 || Math.abs(Date.now() - t) < 15000) return '';
+    return 'v' + Math.floor(t / 1000).toString(36);
+  }catch(e){ return ''; }
+}
 function bam(s){ var h = 0x811c9dc5, i; for(i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0; } return h.toString(36) + '.' + s.length.toString(36); }
 function soanLich(IT){
-  var S_ = lichS(), W_ = canW(), cf = cauHinh(), ds = dsDan(), tron = {}, dan = [], i, j;
+  var S_ = lichS(), W_ = canW(), cf = cauHinh(), ds = dsDan(), tron = {}, dan = [], i, j, dv = dauBan();
   for(i = 0; i < ds.length; i++){
     var f = ds[i], L = NLC.soanDan(S_, W_, IT, f, cf);
     if(!L.length) continue;
     dan.push({ ten: String(f.name || 'Đàn').slice(0, 40), so: parseInt(f.count, 10) || 0, vao: f.hatch });
-    for(j = 0; j < L.length; j++){ var e = L[j]; (tron[e.ngay] = tron[e.ngay] || []).push({ t: e.t, b: e.b, g: e.g }); }
+    for(j = 0; j < L.length; j++){ var e = L[j]; (tron[e.ngay] = tron[e.ngay] || []).push({ t: e.t, b: e.b, g: (dv && e.g && e.g.length + dv.length < 80) ? e.g + '-' + dv : e.g }); }
   }
   return { tron: tron, dan: dan };
 }
@@ -4623,7 +4839,8 @@ function khoiDong(){
     if(D.hidden) return;
     var k = NLC.ymd(new Date()); if(k !== _homNay){ _homNay = k; }
     ve();
-    if(st.bat && (Date.now() - (st.kiem || 0)) > KIEM_LAI) dongBo('mo');
+    /* [NL3] còn lỗi chưa gửi được (vd sửa đàn lúc mất mạng, lượt thử lại rơi vào lúc app nằm nền) ⇒ quay lại app là gửi lại ngay */
+    if(st.bat && (st.loi || (Date.now() - (st.kiem || 0)) > KIEM_LAI)) dongBo('mo');
   });
   Wn.addEventListener('online', function(){ if(st.bat && st.loi) dongBo('co-mang'); });
   Wn.addEventListener('popstate', function(){ dongBang(true); });
@@ -4642,5 +4859,1028 @@ if(D.readyState === 'loading') D.addEventListener('DOMContentLoaded', khoiDong);
 </script>
 <!-- ===== HẾT PHẦN NHẮC LỊCH ===== -->
 
+<!-- ═════ [GNP3] GÀ NÒI QT BẢN BÁN — tài khoản · dùng thử · gia hạn · tin từ xa · hộp thư hỗ trợ (chỉ thêm, không sửa dòng nào của app) ═════ -->
+<script type="module">
+/* ══════════════════════════════════════════════════════════════════════════════════════════
+   GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN (bản 2026-11-19-GNP3)
+   Ghép với app Quản Trị y như Sổ Nợ, Cân Gà Pro — chung Firebase so-no-cc57a:
+     • Giấy phép   accounts/{uid}/lic/ganoi        (dùng thử tự mở · Quản Trị gia hạn / khoá / vĩnh viễn)
+     • Khoá thử    trialKeys/{hộp thư thật}         (mỗi hộp thư dùng thử 1 lần — Rules VÁ LỖ Z3/Z6/Z7)
+     • Đơn gia hạn renewalRequests/{uid}__ganoi     (nội dung CK = email + " ganoi")
+     • Giá         billing/info.priceGanoi · giá riêng accounts/{uid}.giaRieng.ganoi · khuyến mãi billing/info.kmGiaHan
+     • Tin từ xa   accounts/{uid}.remote            (msg · reload · logout · hotro)
+     • Hộp thư     hotro/{tid} + tin/{mid}          (khuôn y Sổ Nợ — Rules VÁ Z8)
+     • Chủ phần mềm: hỏi thẳng máy chủ (Rules isAdmin — kho payments chỉ chủ đọc được) ⇒ mở thẳng, không cần giấy phép
+     • Nhắc lịch   máy chủ nhaclich chỉ giữ lịch tới hết ngày hạn (xem khối chặn ở đầu trang)
+   Dữ liệu đàn gà, lịch, phiếu cân vẫn nằm trong máy như cũ. Lỗi gì trong khối này cũng không làm hỏng app.
+   ══════════════════════════════════════════════════════════════════════════════════════════ */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, browserSessionPersistence,
+         onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail,
+         sendEmailVerification, signOut, EmailAuthProvider, reauthenticateWithCredential, updatePassword }
+  from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimestamp, collection, query, where,
+         orderBy, limit, getDocs, writeBatch, increment }
+  from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+window.__gnpChay = true;
+const APP = "ganoi", TEN = "Gà Nòi QT", APP_VER = "2026-11-19-GNP3";
+const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
+  projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
+  messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
+const HOT_GOC = "0977823979", THANG = [1,3,6,12], KM_GOC = { 12:2 };
+const N = 864e5, H3 = 3*3600e3;
+const K = { gp:"gnp_gp_v1", xem:"gnp_xem_v1", nhac:"gnp_nhac_v1", ht:"gnp_ht_v1", xm:"gnp_xm_v1", bill:"gnp_bill_v1", nl:"gnp_nl_v1",
+            dev:"rmt_dev_v1", nlApp:"nl_v1", dan:"MT_FLOCKS_V1" };
+const ST = window.GNP_ST;
+
+const fbApp = initializeApp(FB);
+const auth  = initializeAuth(fbApp, { persistence:[indexedDBLocalPersistence, browserLocalPersistence, browserSessionPersistence] });
+const db    = getFirestore(fbApp);
+window.GNP = { ver: APP_VER };
+
+/* ─────────── TIỆN ÍCH ─────────── */
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const tien = n => Math.round(Number(n) || 0).toLocaleString("vi-VN") + "đ";
+const ngayVN = ms => { if(ms == null) return "—"; const d = new Date(ms); return isNaN(d) ? "—" : d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear(); };
+function LS(k, d){ try{ const v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; }catch(e){ return d; } }
+function LSet(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function LDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+function msOf(v){
+  try{ if(v == null || v === "") return 0; if(typeof v.toMillis === "function") return v.toMillis();
+       if(v instanceof Date) return isNaN(v) ? 0 : v.getTime(); if(typeof v === "number") return isFinite(v) ? v : 0;
+       if(typeof v.seconds === "number") return v.seconds * 1000; const d = new Date(v); return isNaN(d) ? 0 : d.getTime(); }catch(e){ return 0; }
+}
+/* Hạn mà Firestore Rules công nhận: chỉ timestamp hoặc số mili-giây (chuỗi = sai kiểu) — y hanRules() của Quản Trị */
+function hanMs(v){
+  if(v == null || v === "") return null;
+  if(typeof v.toMillis === "function") return v.toMillis();
+  if(v instanceof Date) return isNaN(v) ? null : v.getTime();
+  if(typeof v === "number" && isFinite(v)) return v;
+  return null;
+}
+function licNho(d){
+  if(!d) return null;
+  return { active: d.active === false ? false : true, vinhVien: d.vinhVien === true, han: hanMs(d.paidUntil),
+           trial: d.trial === true, sai: d.paidUntil != null && d.paidUntil !== "" && hanMs(d.paidUntil) == null };
+}
+function baoLoi(e, ghi){ try{ if(typeof window.baoLoi === "function") window.baoLoi(e, ghi); }catch(x){} }
+function maMay(){
+  try{ const o = JSON.parse(localStorage.getItem(K.dev) || "{}") || {};
+       if(typeof o.id !== "string" || !/^[a-z0-9]{8,40}$/.test(o.id)){
+         o.id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)).replace(/[^a-z0-9]/g, "").slice(0, 40);
+         localStorage.setItem(K.dev, JSON.stringify(o)); }
+       return o.id; }catch(e){ return ""; }
+}
+/* MỖI MÁY CHỈ DÙNG THỬ 1 TÀI KHOẢN (công tắc billing/config.thu1May, y Sổ Nợ · Cân Gà Pro): danh sách tài khoản từng đăng nhập
+   trên máy này nằm chung bộ nhớ rmt_dev_v1 với Sổ Nợ (cùng tên miền) ⇒ đổi email ăn dùng thử trên cùng máy là bị chặn. */
+function mayCoTaiKhoanKhac(uid){ try{ const o = JSON.parse(localStorage.getItem(K.dev) || "{}") || {}; return Array.isArray(o.uids) && o.uids.some(x => typeof x === "string" && x && x !== uid); }catch(e){ return false; } }
+function ghiMay(uid){
+  try{ maMay(); const o = JSON.parse(localStorage.getItem(K.dev) || "{}") || {};
+       let ds = Array.isArray(o.uids) ? o.uids.filter(x => typeof x === "string" && x && x.length <= 128) : [];
+       const i = ds.indexOf(uid); if(i >= 0) ds.splice(i, 1); ds.push(uid); if(ds.length > 12) ds = ds.slice(ds.length - 12);
+       o.uids = ds; localStorage.setItem(K.dev, JSON.stringify(o)); }catch(e){}
+}
+/* Hộp thư thật — y hopThuThat() của Rules và snHopThuThat() của Sổ Nợ */
+function hopThuThat(e){
+  e = String(e || "").toLowerCase(); const p = e.split("@"); if(p.length !== 2) return "";
+  let ten = p[0].split("+")[0]; const mien = p[1] === "googlemail.com" ? "gmail.com" : p[1];
+  if(mien === "gmail.com") ten = ten.replace(/\./g, "");
+  return ten + "@" + mien;
+}
+const laIOS = () => /iPhone|iPad|iPod/i.test(navigator.userAgent || "");
+function daCai(){ try{ return (window.matchMedia && (matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: fullscreen)").matches)) || navigator.standalone === true; }catch(e){ return false; } }
+/* Khung CÂN GÀ PRO của app đang mở? (đang cân Bluetooth thì khung tự cộng mã — app bị khoá thì phải đóng khung lại) */
+const canGaMo = () => { const m = document.getElementById("canGaMask"); return !!(m && m.className === "on"); };
+function dongCanGa(){ try{ if(canGaMo() && typeof window.closeCanGa === "function") window.closeCanGa(); }catch(e){} }
+
+let _tt = 0;
+function toast(m, ms){
+  let t = $("#gnp-toast");
+  if(!t){ t = document.createElement("div"); t.id = "gnp-toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+  t.textContent = m; t.hidden = false; clearTimeout(_tt); _tt = setTimeout(() => { t.hidden = true; }, ms || 3200);
+}
+
+/* ─────────── TRẠNG THÁI ─────────── */
+const G = { u:null, ln:undefined, lnMC:false, acc:null, bill:null, cfg:null, cong:"", tuNguyen:false,
+  huyLic:null, huyAcc:null, henHet:0, henLic:0, skew:null, ver:0, lucGio:0, dangGio:false,
+  dangThu:false, thuXong:false, thuLy:"", thang:1, donCuoi:"", daBaoCK:false, ngoaiTuyen:false, mo:false,
+  dnMode:"in", dx:false, daTaoAcc:false, napBillP:null, veGH:"", authXong:false, mienPhi:false, nlGoi:"", henNL:0,
+  ad:undefined, adXong:false, adP:null, batDau:null };
+/* Chủ phần mềm: máy chủ trả lời (kiemChu) — true / false; undefined = chưa biết (đang hỏi hoặc mất mạng) */
+const laAdmin = () => !!G.u && G.ad === true;
+function nowEff(){ return G.skew != null ? Date.now() - G.skew : Math.max(Date.now(), G.ver || 0); }
+function stHienTai(){ if(!G.u) return null; if(laAdmin()) return { ma:"admin" }; if(G.ln === undefined) return null; return ST.trangThai(G.ln, nowEff()); }
+function moTaSt(st){
+  if(!st) return "Đang kiểm tra…";
+  switch(st.ma){
+    case "admin": return "👑 Tài khoản chủ phần mềm — không giới hạn";
+    case "vv":    return "✅ Đang dùng · không thời hạn";
+    case "thu":   return st.con <= 0 ? "🎁 Dùng thử · hết hôm nay (" + ngayVN(st.han) + ")" : "🎁 Dùng thử · còn " + st.con + " ngày (tới " + ngayVN(st.han) + ")";
+    case "tra":   return st.con <= 0 ? "📅 Hết hạn hôm nay (" + ngayVN(st.han) + ")" : "📅 Còn " + st.con + " ngày (tới " + ngayVN(st.han) + ")";
+    case "het":   return "⛔ Đã hết hạn ngày " + ngayVN(st.han);
+    case "khoa":  return "🔒 Tài khoản đang bị khoá";
+    case "trong": case "sai": return "⚠️ Chưa được đặt hạn dùng";
+    default:      return "Chưa có gói " + TEN;
+  }
+}
+const moTaTK = st => G.mienPhi ? "🆓 Chủ phần mềm đang cho dùng miễn phí" : moTaSt(st);
+function luuGP(){
+  if(!G.u) return;
+  if(laAdmin()){ LSet(K.gp, { v:1, uid:G.u.uid, email:G.u.email || "", admin:true, l:null, ok:nowEff(), ver:G.ver || 0 }); return; }
+  if(!G.lnMC) return;                       /* chỉ ghi khi giấy phép đến từ MÁY CHỦ */
+  LSet(K.gp, { v:1, uid:G.u.uid, email:G.u.email || "", admin:false, l:G.ln || null, ok:nowEff(), ver:G.ver || 0 });
+}
+const xoaGP = () => LDel(K.gp);
+
+/* ─────────── GIÁ · TÀI KHOẢN NHẬN TIỀN · CÔNG TẮC (billing/info, billing/config — chung với cả hệ app) ─────────── */
+function napBill(){
+  if(G.napBillP) return G.napBillP;
+  G.napBillP = (async () => {
+    try{
+      const [a, b] = await Promise.all([getDoc(doc(db, "billing", "info")), getDoc(doc(db, "billing", "config"))]);
+      G.bill = a.exists() ? (a.data() || {}) : {}; G.cfg = b.exists() ? (b.data() || {}) : {};
+      LSet(K.bill, { bill:G.bill, cfg:G.cfg, t:Date.now() });
+      return true;
+    }catch(e){
+      const o = LS(K.bill, null); if(o){ G.bill = G.bill || o.bill || {}; G.cfg = G.cfg || o.cfg || {}; }
+      return false;
+    }finally{ setTimeout(() => { G.napBillP = null; }, 60000); }
+  })();
+  return G.napBillP;
+}
+function hotline(){ const h = String((G.bill && G.bill.hotline) || "").replace(/[^0-9]/g, ""); return /^0[0-9]{8,10}$/.test(h) ? h : HOT_GOC; }
+function hotTxt(){ const h = hotline(); return h.length === 10 ? h.slice(0,4) + " " + h.slice(4,7) + " " + h.slice(7) : h; }
+function ngayThu(){ const n = Math.floor(Number((G.bill || {}).ngayThu)); return n >= 1 && n <= 14 ? n : 14; }
+function km(){
+  const B = G.bill || {}, o = {};
+  if(B.kmGiaHan && typeof B.kmGiaHan === "object" && !Array.isArray(B.kmGiaHan)){
+    for(const k in B.kmGiaHan){ const m = Math.floor(Number(k)), g = Math.floor(Number(B.kmGiaHan[k])); if(m >= 2 && m <= 24 && g >= 1 && g < m) o[m] = g; }
+    return o;
+  }
+  return Object.assign({}, KM_GOC);
+}
+const thangTang = m => km()[Number(m)] || 0;
+const thangTinhTien = m => { m = Number(m) || 1; return Math.max(1, m - thangTang(m)); };
+const giaGiaHan = (u, m) => Math.round((Number(u) || 0) * thangTinhTien(m));
+/* Giá của khách: giá riêng (Quản Trị đặt cho từng khách) → bảng giá chung. Ô trống = CHƯA BÁN (không có mã QR). */
+function donGia(){
+  const g = G.acc && G.acc.giaRieng;
+  const r = (g && typeof g === "object" && !Array.isArray(g)) ? Number(g[APP]) : 0;
+  if(r > 0) return Math.round(r);
+  const v = Number((G.bill || {}).priceGanoi);
+  return v > 0 ? Math.round(v) : 0;
+}
+function nganHang(){
+  const B = G.bill || {}, bin = String(B.bin || B.bankBin || ""), acc = String(B.account || B.acc || "");
+  return (bin && acc) ? { bin, acc, ten:String(B.accName || ""), nh:String(B.bankName || "") } : null;
+}
+const qrUrl = (b, tong, noi) => "https://img.vietqr.io/image/" + encodeURIComponent(b.bin) + "-" + encodeURIComponent(b.acc) + "-compact2.png?amount=" + tong
+  + "&addInfo=" + encodeURIComponent(noi) + "&accountName=" + encodeURIComponent(b.ten);
+
+/* ─────────── CỔNG (màn che app) ─────────── */
+const gate = $("#gnp-gate"), gBody = $("#gnp-body");
+function moCong(html, ten){
+  G.cong = ten || "x"; gBody.innerHTML = html;
+  if(gate.className !== "gnp-on"){ gate.className = "gnp-on"; }
+  gate.scrollTop = 0;
+  try{ const a = document.activeElement; if(a && a !== document.body && !(a.closest && (a.closest("#gnp-gate") || a.closest("#gnp-mask")))) a.blur(); }catch(e){}
+}
+function dongCong(){ G.cong = ""; G.tuNguyen = false; gate.className = ""; }
+const congMo = () => gate.className === "gnp-on";
+const veCho = t => '<p class="gnp-mo">' + esc(t) + "</p>";
+const dongHoTro = () => '<p class="gnp-hint" style="text-align:center">Cần hỗ trợ: <a href="tel:' + hotline() + '">📞 ' + hotTxt() + "</a></p>";
+const nutThoat = () => '<button type="button" class="gnp-b nhe" data-gnp="thoat">Đăng xuất (' + esc(G.u ? G.u.email : "") + ")</button>";
+const nutLienHe = () => '<button type="button" class="gnp-b" data-gnp="hotro">💬 Nhắn chủ phần mềm' + (coTraLoi() ? " · có trả lời mới" : "") + "</button>"
+  + '<a class="gnp-b" href="tel:' + hotline() + '">📞 Gọi ' + hotTxt() + "</a>";
+function nutCai(){
+  if(daCai()) return "";
+  if(window.__gnpCai) return '<button type="button" class="gnp-b" data-gnp="cai">📲 Cài app vào màn hình chính</button>';
+  if(laIOS()) return '<p class="gnp-hint" style="text-align:center">iPhone: bấm nút <b>Chia sẻ</b> rồi chọn <b>Thêm vào MH chính</b> để mở nhanh như app.</p>';
+  return "";
+}
+/* Đang có màn che: phím bấm không lọt xuống app phía sau, và không để ô nhập nào của app (bị che) nhận chữ */
+window.addEventListener("keydown", e => {
+  if(!(congMo() || $("#gnp-mask"))) return;
+  const t = e.target;
+  if(t && t.closest && (t.closest("#gnp-gate") || t.closest("#gnp-mask") || t.closest("#gnp-bar"))) return;
+  e.stopPropagation();
+}, true);
+document.addEventListener("focusin", e => {
+  if(!congMo()) return;
+  const t = e.target; if(!t || t === document.body || t === document.documentElement) return;
+  if(t.closest && (t.closest("#gnp-gate") || t.closest("#gnp-mask") || t.closest("#gnp-bar"))) return;
+  try{ t.blur(); }catch(x){}
+}, true);
+gate.addEventListener("keydown", e => {
+  const t = e.target, id = t && t.id;
+  if(e.key === "Enter" && id === "gnp-em"){ e.preventDefault(); const p = $("#gnp-pw"); if(p) p.focus(); }
+  else if(e.key === "Enter" && (id === "gnp-pw2" || (id === "gnp-pw" && G.dnMode === "in"))){ e.preventDefault(); const b = $("#gnp-go"); if(b) b.click(); }
+  else if(e.key === "Enter" && id === "gnp-pw" && G.dnMode === "up"){ e.preventDefault(); const p = $("#gnp-pw2"); if(p) p.focus(); }
+  e.stopPropagation();
+});
+
+/* ─────────── HƯỚNG DẪN SỬ DỤNG (tài khoản · dùng thử · gia hạn) — app quy trình không có trợ lý nên hướng dẫn nằm ở đây ─────────── */
+function huongDan(mo){
+  const n = G.bill ? " " + ngayThu() + " ngày" : "";
+  return '<details class="gnp-hdan"' + (mo ? " open" : "") + '><summary>❓ Hướng dẫn: dùng thử · gia hạn · mất mạng · dữ liệu</summary><div class="gnp-hb">'
+    + "<p><b>🎁 Dùng thử:</b> tài khoản mới tự được dùng thử miễn phí" + n + ", đủ mọi tính năng (tra lịch 120 ngày, tính liều, nhắc lịch, cân gà). Mỗi hộp thư và mỗi điện thoại chỉ dùng thử 1 lần.</p>"
+    + "<p><b>💳 Mua · gia hạn:</b> bấm <b>TÀI KHOẢN</b> → <b>💳 Gia hạn</b> → chọn 1 / 3 / 6 / 12 tháng → mở app ngân hàng quét mã QR (số tiền và nội dung đã điền sẵn — giữ nguyên nội dung) → bấm <b>✅ Tôi đã chuyển khoản</b>. Chủ phần mềm duyệt xong là app <b>tự mở</b>, không cần bấm gì thêm. Gia hạn sớm thì hạn mới được cộng nối tiếp, không mất ngày nào.</p>"
+    + "<p><b>📴 Mất mạng:</b> đã kiểm tra hạn dùng thì mất mạng vẫn tra lịch, tính liều, cân gà bình thường. Cứ 7 ngày cần nối mạng 1 lần để app kiểm tra lại. Đừng chỉnh lùi ngày giờ điện thoại — app sẽ khoá lại.</p>"
+    + "<p><b>🔔 Thông báo nhắc lịch:</b> chỉ báo trong thời gian tài khoản còn hạn. Gia hạn xong mở app (có mạng) một lần là lịch được gửi lại cho máy chủ.</p>"
+    + "<p><b>💾 Dữ liệu:</b> đàn gà, ngày vào chuồng, phiếu cân nằm trên điện thoại này. Hết hạn hay đăng xuất <b>không mất</b> dữ liệu — gia hạn / đăng nhập lại là thấy y như cũ.</p>"
+    + "<p><b>🔑 Mật khẩu:</b> đổi ở nút <b>🔑 Đổi mật khẩu</b> trong thẻ Tài khoản. Quên mật khẩu: ở màn đăng nhập gõ email → bấm <b>Quên mật khẩu</b> → mở thư để đặt lại.</p>"
+    + "<p><b>💬 Cần giúp:</b> bấm <b>💬 Nhắn chủ phần mềm</b> (nhắn được cả lúc hết hạn), hoặc gọi <a href=\"tel:" + hotline() + "\">📞 " + hotTxt() + "</a>.</p>"
+    + "</div></details>";
+}
+
+/* ─────────── ĐĂNG NHẬP / TẠO TÀI KHOẢN ─────────── */
+const loiAuth = e => ({
+  "auth/invalid-credential":"Sai email hoặc mật khẩu", "auth/wrong-password":"Sai mật khẩu", "auth/user-not-found":"Email này chưa có tài khoản — bấm Tạo tài khoản",
+  "auth/invalid-email":"Email không hợp lệ", "auth/email-already-in-use":"Email này đã có tài khoản — bấm Đăng nhập",
+  "auth/weak-password":"Mật khẩu cần từ 6 ký tự", "auth/network-request-failed":"Không có mạng — nối mạng rồi thử lại",
+  "auth/too-many-requests":"Thử sai nhiều lần — đợi vài phút rồi thử lại", "auth/user-disabled":"Tài khoản này đã bị vô hiệu hoá — gọi chủ phần mềm",
+  "auth/missing-password":"Chưa gõ mật khẩu", "auth/requires-recent-login":"Cần đăng nhập lại rồi làm lại"
+}[e && e.code] || ("Lỗi: " + ((e && (e.code || e.message)) || e)));
+function hienDangNhap(che){
+  G.dnMode = G.dnMode === "up" ? "up" : "in";
+  const up = G.dnMode === "up";
+  moCong('<div class="gnp-sub">Tra lịch thuốc 120 ngày theo ngày tuổi · tính liều · nhắc lịch trước 1 ngày · cân bán gà</div>'
+    + '<div class="gnp-card"><div class="gnp-tabs"><button type="button" class="' + (up ? "" : "gnp-chon") + '" data-gnp="tabin">Đăng nhập</button><button type="button" class="' + (up ? "gnp-chon" : "") + '" data-gnp="tabup">Tạo tài khoản</button></div>'
+    + '<div class="gnp-f"><label for="gnp-em">Email</label><input id="gnp-em" type="email" autocomplete="username" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="ten@gmail.com"></div>'
+    + '<div class="gnp-f"><label for="gnp-pw">Mật khẩu</label><input id="gnp-pw" type="password" autocomplete="' + (up ? "new-password" : "current-password") + '" placeholder="ít nhất 6 ký tự"></div>'
+    + (up ? '<div class="gnp-f"><label for="gnp-pw2">Gõ lại mật khẩu</label><input id="gnp-pw2" type="password" autocomplete="new-password"></div>' : "")
+    + '<button type="button" class="gnp-b pri" id="gnp-go" data-gnp="go">' + (up ? "Tạo tài khoản" : "Đăng nhập") + "</button>"
+    + (up ? "" : '<button type="button" class="gnp-b nhe" data-gnp="quen">Quên mật khẩu</button>') + "</div>"
+    + '<p class="gnp-hint" style="text-align:center">Tài khoản mới được <b>dùng thử miễn phí</b>, đủ mọi tính năng, không cần thẻ.<br>Đã có tài khoản Sổ Nợ hoặc Cân Gà Pro của cùng chủ phần mềm thì đăng nhập bằng đúng email + mật khẩu đó.</p>'
+    + (che ? '<div class="gnp-bao x">' + esc(che) + "</div>" : "") + '<div id="gnp-caiw">' + nutCai() + "</div>" + huongDan(false) + dongHoTro(), "dangnhap");
+}
+async function bamDangNhap(btn){
+  const em = String(($("#gnp-em") || {}).value || "").trim(), pw = String(($("#gnp-pw") || {}).value || "");
+  const up = G.dnMode === "up";
+  if(!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return toast("Gõ đúng email (vd: ten@gmail.com)");
+  if(pw.length < 6) return toast("Mật khẩu cần từ 6 ký tự");
+  if(up && pw !== String(($("#gnp-pw2") || {}).value || "")) return toast("Hai lần gõ mật khẩu không giống nhau");
+  btn.disabled = true; btn.textContent = "Đang xử lý…";
+  try{
+    if(up){
+      const cr = await createUserWithEmailAndPassword(auth, em, pw);
+      try{ await setDoc(doc(db, "signups", cr.user.uid), { email: cr.user.email || em, app:APP, createdAt:serverTimestamp(), dev:maMay() }, { merge:true }); }catch(e){}
+    }else await signInWithEmailAndPassword(auth, em, pw);
+  }catch(e){
+    btn.disabled = false; btn.textContent = up ? "Tạo tài khoản" : "Đăng nhập";
+    const m = loiAuth(e); toast(m, 4500);
+    if(e && e.code === "auth/email-already-in-use"){ G.dnMode = "in"; hienDangNhap(m); const x = $("#gnp-em"); if(x) x.value = em; }
+  }
+}
+async function bamQuenMK(){
+  const em = String(($("#gnp-em") || {}).value || "").trim();
+  if(!em) return toast("Gõ email vào ô Email trước đã");
+  try{ const lc = auth.languageCode; auth.languageCode = "vi"; try{ await sendPasswordResetEmail(auth, em); }finally{ auth.languageCode = lc; }
+       toast("📨 Đã gửi thư đặt lại mật khẩu tới " + em + " — xem cả mục Spam", 5000); }
+  catch(e){ toast(loiAuth(e), 4500); }
+}
+async function dangXuat(){
+  dungNghe(); xoaGP(); G.ln = undefined; G.lnMC = false; G.acc = null;
+  try{ await signOut(auth); }catch(e){}
+}
+
+/* ─────────── TÀI KHOẢN CHỦ PHẦN MỀM: hỏi thẳng máy chủ ───────────
+   Kho payments (sổ doanh thu) chỉ chủ phần mềm đọc được (Rules isAdmin: đúng email chủ + đăng nhập mật khẩu).
+   Đọc thử 1 ô không có thật: chủ ⇒ đọc được (không có gì) · khách ⇒ máy chủ chối · mất mạng ⇒ chưa biết (giữ như lần trước). */
+function kiemChu(u){
+  return getDoc(doc(db, "payments", "__gnp_kiem_chu__")).then(() => true, e => (e && e.code === "permission-denied") ? false : null)
+    .then(v => { if(G.u === u){ if(v !== null) G.ad = v; G.adXong = true; } return v; });
+}
+
+/* ─────────── DÙNG THỬ: khoá hộp thư rồi tạo giấy phép thử ─────────── */
+async function giuKhoa(){
+  const u = G.u, k = hopThuThat(u.email); if(!k || k.indexOf("/") >= 0) return "loi";
+  const ref = doc(db, "trialKeys", k);
+  try{ await setDoc(ref, { uid:u.uid, at:serverTimestamp() }); return "ok"; }
+  catch(e){
+    if(!e || e.code !== "permission-denied") return "mang";
+    try{ const s = await getDoc(ref); if(s.exists() && (s.data() || {}).uid === u.uid) return "ok"; }
+    catch(e2){ if(!e2 || e2.code !== "permission-denied") return "mang"; }
+    if((G.cfg || {}).thuXacMinh === true && !u.emailVerified) return "xacminh";
+    return "khac";
+  }
+}
+async function moDungThu(){
+  if(G.dangThu || G.thuXong || !G.u || laAdmin()) return;
+  G.dangThu = true; const u = G.u;
+  moCong(veCho("Đang mở dùng thử miễn phí…"), "cho");
+  /* chưa biết có phải chủ phần mềm không ⇒ hỏi máy chủ cho chắc rồi mới mở dùng thử (chủ phần mềm không ăn suất dùng thử) */
+  if(G.ad !== false){ try{ if(G.adP) await G.adP; }catch(e){} if(G.u === u && G.ad !== true && G.ad !== false){ try{ await kiemChu(u); }catch(e){} } }
+  if(G.u !== u){ G.dangThu = false; return; }
+  if(G.ad === true){ G.dangThu = false; return; }
+  let ly = "";
+  try{
+    if(G.ad !== false) ly = "mang";
+    else{
+      const coMang = await napBill();
+      const c = G.cfg || {};
+      if(!coMang && !Object.keys(c).length && navigator.onLine === false) ly = "mang";
+      else if(c.choThu === false) ly = "tatthu";
+      else if(/\+[^@]*@/.test(String(u.email || "")) && c.chanBiDanh !== false) ly = "bidanh";
+      else if(c.thu1May !== false && mayCoTaiKhoanKhac(u.uid)) ly = "may";
+      else{
+        if(c.motThuMoiHop !== false || c.thuXacMinh === true){ const k = await giuKhoa(); if(k !== "ok") ly = k; }
+        if(!ly){
+          const d0 = new Date(nowEff()); d0.setDate(d0.getDate() + ngayThu()); d0.setHours(23, 59, 0, 0);
+          try{ await setDoc(doc(db, "accounts", u.uid, "lic", APP), { trial:true, trialUsed:true, active:true, paidUntil:d0, startedAt:new Date() }); }
+          catch(e){ ly = (e && e.code === "permission-denied") ? "tuchoi" : "mang"; if(ly === "tuchoi") baoLoi(e, "Mở dùng thử Gà Nòi QT bị máy chủ chối"); }
+        }
+      }
+    }
+  }catch(e){ ly = "mang"; }
+  G.dangThu = false;
+  if(G.u !== u) return;
+  if(!ly){ G.thuXong = true; G.thuLy = ""; toast("🎁 Đã mở " + ngayThu() + " ngày dùng thử — chúc đàn gà khoẻ, bán được giá!", 4000); return; }
+  G.thuLy = ly;
+  if(ly === "mang" || ly === "loi"){ G.thuXong = false; return hienCanMang("thu"); }
+  G.thuXong = true;
+  if(ly === "xacminh") return hienXacMinh(true);
+  danhGia();
+}
+const LY_THU = {
+  tatthu: "Chủ phần mềm đang <b>tạm ngưng dùng thử</b>. Mua gói bên dưới là dùng được ngay sau khi chủ phần mềm duyệt.",
+  bidanh: "Email có dấu <b>+</b> không mở được dùng thử. Mua gói bên dưới, hoặc đăng xuất rồi tạo tài khoản bằng email thường.",
+  khac:   "Hộp thư <b>" + "%e" + "</b> đã dùng thử trước đây (bằng tài khoản khác cùng hộp thư). Mỗi hộp thư chỉ dùng thử 1 lần — mua gói bên dưới để dùng tiếp.",
+  tuchoi: "Máy chủ chưa mở dùng thử cho Gà Nòi QT. Mua gói bên dưới, hoặc nhắn / gọi chủ phần mềm để được mở.",
+  may:    "Điện thoại này đã có <b>tài khoản khác</b> đăng nhập. Mỗi máy chỉ dùng thử 1 tài khoản — đăng nhập lại tài khoản cũ, hoặc mua gói bên dưới để dùng tài khoản này."
+};
+async function hienXacMinh(tuGui){
+  const u = G.u; if(!u) return;
+  let nho = LS(K.xm, {}); const truoc = Number(nho[u.uid]) || 0;
+  let daGui = false;
+  if(tuGui && !(truoc && Date.now() - truoc < 600000)){
+    try{ const lc = auth.languageCode; auth.languageCode = "vi"; try{ await sendEmailVerification(u); }finally{ auth.languageCode = lc; }
+         nho = {}; nho[u.uid] = Date.now(); LSet(K.xm, nho); daGui = true; }catch(e){}
+  }
+  moCong('<div class="gnp-card"><b>Xác minh email để dùng thử</b><p class="gnp-hint" style="margin:6px 0 0">Chủ phần mềm yêu cầu tài khoản mới phải xác minh email trước khi dùng thử (mỗi hộp thư thật được dùng thử 1 lần).</p></div>'
+    + '<div class="gnp-bao ok">📨 ' + (daGui ? "Vừa gửi" : "Đã gửi") + " thư xác minh tới <b>" + esc(u.email) + "</b>. Mở thư, bấm vào link trong thư, rồi quay lại bấm <b>Tôi đã xác minh</b>. Không thấy thư thì xem cả mục <b>Spam / Thư rác</b>.</div>"
+    + '<button type="button" class="gnp-b pri" data-gnp="daxm">✅ Tôi đã xác minh</button>'
+    + '<button type="button" class="gnp-b" data-gnp="guixm">📨 Gửi lại thư xác minh</button>'
+    + '<button type="button" class="gnp-b" data-gnp="giahan">💳 Mua gói luôn (không cần xác minh)</button>'
+    + nutThoat() + dongHoTro(), "xacminh");
+}
+async function bamDaXacMinh(btn){
+  const u = auth.currentUser; if(!u) return;
+  btn.disabled = true; btn.textContent = "Đang kiểm tra…";
+  try{ await u.reload(); await u.getIdToken(true); }catch(e){}
+  btn.disabled = false; btn.textContent = "✅ Tôi đã xác minh";
+  if(auth.currentUser && auth.currentUser.emailVerified){ G.thuXong = false; G.thuLy = ""; moDungThu(); }
+  else toast("Chưa thấy xác minh — mở thư, bấm link trong thư rồi bấm lại nút này", 4500);
+}
+async function bamGuiLaiXM(){
+  const u = auth.currentUser; if(!u) return;
+  const nho = LS(K.xm, {}); const truoc = Number(nho[u.uid]) || 0;
+  if(truoc && Date.now() - truoc < 60000) return toast("Thư vừa gửi rồi — đợi 1 phút rồi gửi lại nhé");
+  try{ const lc = auth.languageCode; auth.languageCode = "vi"; try{ await sendEmailVerification(u); }finally{ auth.languageCode = lc; }
+       const o = {}; o[u.uid] = Date.now(); LSet(K.xm, o); toast("📨 Đã gửi lại thư xác minh — xem cả mục Spam", 4500); }
+  catch(e){ toast(e && e.code === "auth/too-many-requests" ? "Gửi nhiều lần quá — đợi vài phút rồi thử lại" : "Chưa gửi được — kiểm tra mạng", 4500); }
+}
+
+/* ─────────── CẦN MẠNG ─────────── */
+function hienCanMang(ly){
+  if(G.mo) dongCanGa();
+  G.mo = false; veTheTK();
+  const t = { dau:"Máy này chưa từng kiểm tra tài khoản Gà Nòi QT. Lần đầu cần có mạng — sau đó mất mạng vẫn tra lịch, tính liều, cân gà được.",
+              lau:"Đã hơn 7 ngày app chưa kiểm tra được hạn dùng. Nối mạng một chút để app kiểm tra, rồi dùng tiếp (kể cả lúc mất mạng).",
+              lui:"Ngày giờ trên máy đang bị chỉnh lùi. Vào Cài đặt điện thoại → Ngày & giờ → bật <b>Tự động</b>, nối mạng rồi bấm Thử lại.",
+              thu:"Chưa mở được dùng thử vì mạng yếu / mất mạng. Nối mạng rồi bấm Thử lại." }[ly] || "Cần có mạng để kiểm tra tài khoản.";
+  moCong('<div class="gnp-bao v">' + t + "</div>"
+    + '<button type="button" class="gnp-b pri" data-gnp="thulai">Thử lại</button>' + nutThoat() + dongHoTro(), "canmang");
+}
+
+/* ─────────── XÉT HẠN ⇒ MỞ APP / CHE LẠI ─────────── */
+function danhGia(){
+  if(!G.u) return;
+  const st = stHienTai(); if(!st) return;
+  if(ST.con(st)) return moApp(st);
+  if(!G.adXong) return;                                            /* đang hỏi máy chủ có phải chủ phần mềm không */
+  if(G.ln === null && (G.dangThu || !G.thuXong)) return;          /* đang mở dùng thử */
+  khoa(st);
+}
+async function khoa(st){
+  /* Công tắc "Bắt buộc giấy phép" của app Quản Trị đang TẮT (billing/config.enforce = false) ⇒ cả hệ dùng miễn phí */
+  if(G.cfg == null) await napBill();
+  if(!G.u || laAdmin()) return;
+  if(G.cfg && G.cfg.enforce === false) return moApp(st, true);
+  const dangMo = G.mo;
+  G.mo = false; G.mienPhi = false; clearTimeout(G.henHet);
+  if(dangMo) dongCanGa();
+  veTheTK(); nlSoat();
+  if(G.cong === "giahan" || G.cong === "xacminh") { if(G.cong === "giahan" && G.veGH !== moTaSt(st)) veGiaHan(); return; }
+  G.tuNguyen = false; hienGiaHan(false);
+}
+function moApp(st, mien){
+  const truoc = G.mo; G.mo = true;
+  G.mienPhi = !!mien && !!st && st.ma !== "admin" && !ST.con(st);
+  luuGP();
+  if(congMo()){
+    if(G.cong === "giahan" && G.tuNguyen){ if(G.veGH !== moTaSt(st)) veGiaHan(); }
+    else dongCong();
+  }
+  if(!truoc) G.daBaoCK = false;
+  henHet(st); veTheTK(); nlSoat(); if(!mien) nhacHan(st);
+}
+function henHet(st){
+  clearTimeout(G.henHet);
+  if(!st || !st.han || (st.ma !== "thu" && st.ma !== "tra")) return;
+  const ms = st.han - nowEff() + 800;
+  if(ms > 0 && ms < 2147000000) G.henHet = setTimeout(danhGia, ms);
+}
+function baoDoiHan(truoc){
+  const sau = stHienTai(); if(!truoc || !sau) return;
+  if(ST.con(truoc) && ST.con(sau) && sau.han && truoc.han && sau.han > truoc.han + N / 2)
+    toast("✅ Đã gia hạn " + TEN + " tới " + ngayVN(sau.han) + ". Cảm ơn bạn!", 5000);
+  else if(!ST.con(truoc) && ST.con(sau) && sau.ma !== "thu") toast("✅ " + TEN + " đã mở" + (sau.han ? " — hạn tới " + ngayVN(sau.han) : "") + ". Cảm ơn bạn!", 5000);
+}
+/* Mỗi ngày nhắc 1 lần khi sắp hết hạn: gói trả tiền còn ≤ 7 ngày, dùng thử còn ≤ 3 ngày. Đang cân gà thì để lần sau (không chen ngang). */
+function nhacHan(st){
+  if(!st || !G.u) return;
+  const sap = (st.ma === "tra" && st.con <= 7) || (st.ma === "thu" && st.con <= 3);
+  if(!sap || congMo() || $("#gnp-mask") || canGaMo()) return;
+  const d = new Date(nowEff()), k = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + "|" + G.u.uid;
+  if(LS(K.nhac, "") === k) return;
+  LSet(K.nhac, k);
+  moMask("<h4>⏰ " + (st.ma === "thu" ? "Sắp hết dùng thử" : "Sắp hết hạn") + "</h4><p>" + esc(moTaSt(st)) + ". Gia hạn sớm thì hạn mới được <b>cộng nối tiếp</b>, không mất ngày nào.</p>"
+    + '<button type="button" class="gnp-b pri" data-gnp="giahan">💳 Gia hạn ngay</button><button type="button" class="gnp-b" data-gnp="dongmask">Để sau</button>', "nhac");
+}
+
+/* ─────────── MÀN GIA HẠN (cũng là màn khoá khi hết hạn) ─────────── */
+function hienGiaHan(tuNguyen){
+  G.tuNguyen = !!tuNguyen; G.cong = "giahan";
+  veGiaHan();
+  napBill().then(() => { if(G.cong === "giahan") veGiaHan(); });
+}
+function kv(nhan, gt, chep){
+  return '<div class="gnp-kv"><span>' + nhan + "</span><b>" + esc(gt) + (chep != null ? '<button type="button" class="gnp-cp" data-gnp="chep" data-v="' + esc(chep) + '">Chép</button>' : "") + "</b></div>";
+}
+function kmHtml(unit, m){
+  const b = thangTang(m); if(b <= 0 || !(unit > 0)) return "";
+  const full = unit * m, tra = giaGiaHan(unit, m);
+  return '<div class="gnp-km">🎁 Gói ' + m + " tháng: tặng " + b + " tháng — chỉ trả tiền " + thangTinhTien(m) + " tháng · tiết kiệm " + tien(full - tra) + " <s>" + tien(full) + "</s></div>";
+}
+function veGiaHan(){
+  const u = G.u; if(!u) return;
+  const st = stHienTai() || { ma:"chua" }, con = ST.con(st);
+  G.veGH = moTaSt(stHienTai());
+  let h = '<div class="gnp-card">' + kv("Tài khoản", u.email || "") + kv("Tình trạng", moTaSt(st)) + "</div>";
+  if(G.ln === null && G.thuLy && LY_THU[G.thuLy]) h += '<div class="gnp-bao v">' + LY_THU[G.thuLy].replace("%e", esc(hopThuThat(u.email))) + "</div>";
+  if(st.ma === "khoa"){
+    h += '<div class="gnp-bao x">Chủ phần mềm đang <b>khoá</b> tài khoản Gà Nòi QT này. Dữ liệu đàn gà, phiếu cân trên máy vẫn còn nguyên. Nhắn hoặc gọi chủ phần mềm để được mở lại.</div>'
+      + nutLienHe() + '<button type="button" class="gnp-b" data-gnp="kiemtra">🔄 Kiểm tra lại</button>' + nutThoat();
+    moCong(h, "giahan"); return;
+  }
+  if(st.ma === "het") h += '<div class="gnp-bao x">Hết hạn rồi nên app tạm khoá. <b>Dữ liệu đàn gà, phiếu cân trên máy vẫn còn nguyên</b> — gia hạn xong là dùng tiếp.</div>';
+  else if(st.ma === "trong" || st.ma === "sai") h += '<div class="gnp-bao v">Tài khoản chưa được đặt hạn dùng. Gia hạn bên dưới, hoặc nhắn chủ phần mềm.</div>';
+  const unit = donGia(), b = nganHang(), m = THANG.indexOf(G.thang) >= 0 ? G.thang : 1, tong = giaGiaHan(unit, m), noi = (u.email || "") + " " + APP;
+  h += '<div class="gnp-card"><b>' + (st.ma === "chua" || st.ma === "trong" || st.ma === "sai" ? "Mua gói Gà Nòi QT" : "Gia hạn Gà Nòi QT") + "</b>"
+    + '<div class="gnp-thang">' + THANG.map(x => '<button type="button" data-gnp="thang" data-m="' + x + '" class="' + (x === m ? "gnp-chon" : "") + '">' + x + " tháng" + (thangTang(x) > 0 ? " 🎁" : "") + "</button>").join("") + "</div>";
+  if(!(unit > 0)) h += '<div class="gnp-bao v">Chủ phần mềm chưa đặt giá Gà Nòi QT. Nhắn tin hoặc gọi <b>' + hotTxt() + "</b> để được mở gói.</div></div>";
+  else if(!b) h += '<div class="gnp-bao v">Chủ phần mềm chưa khai số tài khoản nhận tiền. Nhắn tin hoặc gọi <b>' + hotTxt() + "</b>.</div></div>";
+  else{
+    h += '<div class="gnp-tong">Tổng: <b>' + tien(tong) + "</b> <small>(" + tien(unit) + "/tháng)</small></div>" + kmHtml(unit, m)
+      + '<div class="gnp-qr"><img alt="Mã QR chuyển khoản" src="' + esc(qrUrl(b, tong, noi)) + '" onerror="this.style.display=\'none\'"><div class="gnp-hint">Mở app ngân hàng → Quét mã QR — số tiền và nội dung đã điền sẵn</div></div>'
+      + kv("🏦 Ngân hàng", b.nh || b.bin) + kv("🔢 Số TK", b.acc, b.acc) + kv("👤 Chủ TK", b.ten) + kv("💰 Số tiền", tien(tong), String(tong)) + kv("📝 Nội dung", noi, noi)
+      + '<div class="gnp-bao v" style="margin-bottom:0">⚠️ Giữ <b>nguyên nội dung</b> khi chuyển khoản để chủ phần mềm mở đúng tài khoản. Chuyển xong bấm nút xanh.</div>'
+      + '<button type="button" class="gnp-b ok" data-gnp="dack">✅ Tôi đã chuyển khoản</button></div>';
+  }
+  if(G.daBaoCK) h += '<div class="gnp-bao ok">⏳ Đã báo chủ phần mềm. App <b>tự mở</b> khi được duyệt (thường vài phút) — không cần bấm gì thêm.</div>';
+  h += con ? '<button type="button" class="gnp-b" data-gnp="dong">← Quay lại app</button>' : '<button type="button" class="gnp-b" data-gnp="kiemtra">🔄 Kiểm tra lại</button>';
+  h += nutLienHe() + nutThoat();
+  moCong(h, "giahan");
+  if(unit > 0 && b && !laAdmin()) ghiDon(false);
+}
+/* Đơn gia hạn: ghi khi mã QR hiện ra (máy chủ SePay / app Quản Trị khớp tiền về với đơn chờ), thêm cờ ck khi khách bấm "Đã chuyển" */
+async function ghiDon(daCK){
+  const u = G.u; if(!u || laAdmin()) return;
+  const unit = donGia(), m = THANG.indexOf(G.thang) >= 0 ? G.thang : 1, tong = giaGiaHan(unit, m);
+  if(!(tong > 0)){ if(daCK) toast("Chưa có giá gói — gọi " + hotTxt()); return; }
+  const khoa = m + "|" + tong;
+  if(!daCK && khoa === G.donCuoi) return;
+  const d = { uid:u.uid, app:APP, email:u.email || "", months:m, amount:tong, noiDung:(u.email || "") + " " + APP,
+              requestedAt:serverTimestamp(), status:"pending", handledAt:null };
+  if(daCK) d.ck = { luc:serverTimestamp(), thang:m, tien:tong };
+  if(!daCK) G.donCuoi = khoa;
+  try{
+    await setDoc(doc(db, "renewalRequests", u.uid + "__" + APP), d, { merge:true });
+    if(daCK){ G.daBaoCK = true; toast("✅ Đã báo chủ phần mềm: bạn đã chuyển " + tien(tong) + ". App tự mở khi được duyệt.", 5000); if(G.cong === "giahan") veGiaHan(); }
+  }catch(e){
+    if(!daCK) G.donCuoi = "";
+    if(daCK) toast("❌ Chưa gửi được — kiểm tra mạng rồi bấm lại", 4500);
+  }
+}
+async function kiemTraLai(btn){
+  if(btn){ btn.disabled = true; btn.textContent = "Đang kiểm tra…"; }
+  try{
+    const s = await getDoc(doc(db, "accounts", G.u.uid, "lic", APP));
+    const truoc = stHienTai();
+    G.ln = s.exists() ? licNho(s.data() || {}) : null; G.lnMC = true; luuGP();
+    const sau = stHienTai();
+    if(ST.con(sau)){ baoDoiHan(truoc); danhGia(); return; }
+    toast(G.daBaoCK ? "Chủ phần mềm chưa duyệt — duyệt xong app tự mở, không cần bấm" : "Chưa thấy gia hạn trên máy chủ", 4500);
+    danhGia();
+  }catch(e){ toast("Cần có mạng để kiểm tra", 4000); }
+  finally{ if(btn && btn.isConnected){ btn.disabled = false; btn.textContent = "🔄 Kiểm tra lại"; } }
+}
+
+/* ─────────── NGHE GIẤY PHÉP + TÀI KHOẢN (1 lượt đọc lúc mở + 1 lượt mỗi lần Quản Trị đổi) ─────────── */
+function dungNghe(){
+  try{ if(G.huyLic) G.huyLic(); }catch(e){} try{ if(G.huyAcc) G.huyAcc(); }catch(e){}
+  G.huyLic = G.huyAcc = null; clearTimeout(G.henLic); clearTimeout(G.henHet);
+}
+function ngheLic(){
+  const u = G.u; let coMC = false;
+  G.henLic = setTimeout(() => { if(!coMC && G.u === u) khongCoMang(); }, 9000);
+  G.huyLic = onSnapshot(doc(db, "accounts", u.uid, "lic", APP), { includeMetadataChanges:true }, s => {
+    if(G.u !== u || s.metadata.fromCache || s.metadata.hasPendingWrites) return;   /* chỉ tin lời MÁY CHỦ */
+    coMC = true; clearTimeout(G.henLic);
+    const truoc = stHienTai();
+    G.ngoaiTuyen = false; G.lnMC = true;
+    if(!s.exists()){ G.ln = null; luuGP(); if(!G.thuXong) moDungThu(); else danhGia(); return; }
+    G.ln = licNho(s.data() || {}); G.thuLy = "";
+    luuGP(); danhGia(); baoDoiHan(truoc);
+  }, e => { if(G.u === u && !coMC) khongCoMang(); });
+}
+function khongCoMang(){
+  if(!G.u || G.lnMC || laAdmin()) return;
+  G.ngoaiTuyen = true;
+  const gp = LS(K.gp, null);
+  if(gp && gp.uid === G.u.uid && gp.l !== undefined){
+    const ver = Number(gp.ver) || 0;
+    if(Date.now() < ver - 2 * 3600e3) return hienCanMang("lui");
+    if(nowEff() - (Number(gp.ok) || 0) > 7 * N) return hienCanMang("lau");
+    G.ln = gp.l || null; G.thuXong = true; G.adXong = true;
+    return danhGia();
+  }
+  hienCanMang("dau");
+}
+function ngheAcc(){
+  const u = G.u;
+  G.huyAcc = onSnapshot(doc(db, "accounts", u.uid), s => {
+    if(G.u !== u || s.metadata.fromCache || s.metadata.hasPendingWrites) return;
+    if(!s.exists()){ G.acc = {}; taoAcc(); } else G.acc = s.data() || {};
+    xuLyTuXa();
+    if(G.cong === "giahan") veGiaHan();
+    veTheTK();
+  }, e => {});
+}
+async function taoAcc(){
+  if(G.daTaoAcc || !G.u) return; G.daTaoAcc = true;
+  const u = G.u;
+  try{ if(G.ad !== false && G.adP) await G.adP; }catch(e){}
+  if(G.u !== u || G.ad !== false) { G.daTaoAcc = false; return; }   /* chủ phần mềm / chưa rõ ⇒ không tạo hồ sơ khách */
+  try{ await setDoc(doc(db, "accounts", u.uid), { email:u.email || "", createdAt:serverTimestamp() }); }catch(e){}
+}
+
+/* ─────────── GIỜ MÁY: lấy giờ thật từ máy chủ trang (chống vặn lùi giờ để dùng tiếp khi hết hạn) ─────────── */
+async function kiemGio(){
+  if(G.dangGio || !/^https?:$/.test(location.protocol)) return;
+  G.dangGio = true;
+  try{
+    const t0 = Date.now();
+    const r = await fetch(location.href.split("#")[0], { method:"HEAD", cache:"no-store", credentials:"omit" });
+    const t1 = Date.now(), d = Date.parse(r.headers.get("date") || "");
+    if(!isNaN(d) && t1 - t0 < 15000){
+      let sk = (t0 + t1) / 2 - d; if(Math.abs(sk) < 120000) sk = 0;      /* lệch dưới 2 phút: bỏ qua */
+      G.skew = sk; G.lucGio = Date.now(); G.ver = Math.max(G.ver || 0, d);
+      const gp = LS(K.gp, null); if(gp && G.u && gp.uid === G.u.uid){ gp.ver = Math.max(Number(gp.ver) || 0, d); LSet(K.gp, gp); }
+      danhGia();
+    }
+  }catch(e){}
+  finally{ G.dangGio = false; }
+}
+
+/* ─────────── THÔNG BÁO NHẮC LỊCH ĐI THEO HẠN DÙNG ───────────
+   Khối chặn ở đầu trang hỏi window.__gnpQuyenNL() trước mỗi lần khối nhắc lịch [NL1] gửi lịch lên máy chủ.
+   Hạn dùng đổi (gia hạn · hết hạn · khoá · vĩnh viễn · đăng xuất) mà máy đang bật nhắc lịch ⇒ nhờ [NL1] gửi lại 1 lần (dongBo ép). */
+window.__gnpQuyenNL = function(){
+  try{
+    if(!G.authXong) return { ma:"cho" };
+    if(!G.u) return { ma:"tat" };
+    if(laAdmin()) return { ma:"tudo" };
+    if(G.cfg && G.cfg.enforce === false) return { ma:"tudo" };
+    const st = stHienTai(); if(!st) return { ma:"cho" };
+    if(ST.con(st)) return ST.quyenTuSt(st);
+    if(!G.adXong) return { ma:"cho" };
+    if(G.ln === null && (G.dangThu || !G.thuXong)) return { ma:"cho" };
+    if(G.cfg == null) return { ma:"cho" };
+    return { ma:"tat" };
+  }catch(e){ return { ma:"cho" }; }
+};
+function nlSoat(){
+  try{
+    const q = window.__gnpQuyenNL(); if(!q || q.ma === "cho") return;
+    const k = q.ma === "cat" ? "cat:" + q.cut : q.ma;
+    const nl = LS(K.nlApp, null); if(!nl || !nl.bat) return;
+    const da = LS(K.nl, null); if(da && da.k === k) return;
+    if(G.nlGoi === k) return;
+    G.nlGoi = k; clearTimeout(G.henNL);
+    G.henNL = setTimeout(() => { try{ const L = window.__NL__; if(L && typeof L.dongBo === "function") L.dongBo("gnp", true); }catch(e){} }, 3500);
+  }catch(e){}
+}
+
+/* ─────────── TIN TỪ XA (accounts/{uid}.remote — Quản Trị ghi, khách chỉ đọc) ─────────── */
+const docXem = () => LS(K.xem, {}) || {};
+const ghiXem = v => LSet(K.xem, v);
+function thanh(loai, text, nhan, onNhan, choTat, onTat){
+  xoaThanh();
+  const d = document.createElement("div"); d.id = "gnp-bar"; d.className = loai;
+  d.innerHTML = '<div class="t">' + esc(text) + "</div>" + (nhan ? '<button type="button" data-r="ok">' + esc(nhan) + "</button>" : "") + (choTat ? '<button type="button" class="x" data-r="x" aria-label="Đóng">✕</button>' : "");
+  document.body.appendChild(d);
+  d.addEventListener("click", e => { const b = e.target.closest ? e.target.closest("[data-r]") : null; if(!b) return;
+    if(b.getAttribute("data-r") === "ok"){ if(onNhan) onNhan(); } else { xoaThanh(); if(onTat) onTat(); } });
+}
+function xoaThanh(loai){ const e = $("#gnp-bar"); if(e && (!loai || e.className === loai)) e.remove(); }
+function xuLyTuXa(){
+  try{
+    const r = (G.acc && G.acc.remote) || {}, xem = docXem();
+    if(r.logout && r.logout.id && r.logout.at) dangXuatNeuCu(r.logout);
+    if(r.reload && r.reload.id && xem.rl !== r.reload.id){
+      thanh("rl", "✨ Có bản mới của Gà Nòi QT — bấm Cập nhật (đàn gà, phiếu cân vẫn giữ nguyên)", "Cập nhật ngay", () => {
+        const v = docXem(); v.rl = r.reload.id; ghiXem(v); capNhatApp(); }, false);
+      return;
+    }
+    if(!(r.reload && r.reload.id) && xem.rl){ delete xem.rl; ghiXem(xem); }
+    xoaThanh("rl");
+    const m = r.msg;
+    if(!m || !m.id || !m.text){ xoaThanh("tin"); const mk = $("#gnp-mask"); if(mk && mk.getAttribute("data-k") === "tin") mk.remove(); }
+    else if(xem.msg !== m.id){
+      if(m.muc === "warn"){
+        /* khách đang mở hộp thoại (đang gõ tin hỗ trợ, đổi mật khẩu…) ⇒ KHÔNG đè lên làm mất chữ; đóng hộp thoại là hiện ngay (dongMask soát lại) */
+        if(!$("#gnp-mask")) moMask("<h4>📢 Thông báo từ chủ phần mềm</h4><p class=\"gnp-tx\">" + esc(m.text) + '</p><button type="button" class="gnp-b pri" data-gnp="daxemtin" data-id="' + esc(m.id) + '">Đã hiểu</button>', "tin");
+      }else thanh("tin", "📢 " + m.text, "", null, true, () => { const v = docXem(); v.msg = m.id; ghiXem(v); });
+    }
+    const h = r.hotro;
+    if(h && h.id && HT.tid === h.id && $("#gnp-htb") && coTraLoi()) daXemTraLoi();   /* đang mở đúng cuộc đó ⇒ đã thấy trả lời ngay trên màn */
+    if(h && h.id && coTraLoi() && !$("#gnp-mask") && !$("#gnp-bar"))
+      thanh("ht", "💬 Chủ phần mềm đã trả lời tin nhắn của bạn", "Xem", () => { xoaThanh(); moHopThu(); }, true, () => { daXemTraLoi(); });
+  }catch(e){}
+}
+function coTraLoi(){
+  const h = G.acc && G.acc.remote && G.acc.remote.hotro; if(!h || !h.id) return false;
+  const da = LS(K.ht, {}) || {}; return (Number(h.n) || 0) > (Number(da[h.id]) || 0);
+}
+function daXemTraLoi(){
+  const h = G.acc && G.acc.remote && G.acc.remote.hotro; if(!h || !h.id) return;
+  const da = LS(K.ht, {}) || {}; da[h.id] = Number(h.n) || 0; LSet(K.ht, da); veTheTK();
+}
+async function dangXuatNeuCu(lo){
+  if(G.dx || !G.u) return;
+  const luc = msOf(lo.at); if(!luc) return;
+  let phien = 0; try{ const r = await G.u.getIdTokenResult(); phien = Date.parse((r && r.authTime) || ""); }catch(e){ phien = 0; }
+  if(!phien || isNaN(phien) || phien >= Math.floor(luc / 1000) * 1000 || G.dx) return;   /* giờ đăng nhập của Firebase chỉ tính tới giây */
+  G.dx = true;
+  try{ alert("🔐 Chủ phần mềm yêu cầu đăng nhập lại trên máy này.\n\nBấm OK rồi đăng nhập bằng email + mật khẩu của bạn. Dữ liệu đàn gà, phiếu cân vẫn còn nguyên."); }catch(e){}
+  await dangXuat();
+  try{ location.reload(); }catch(e){}
+}
+async function capNhatApp(){
+  try{ const r = navigator.serviceWorker && await navigator.serviceWorker.getRegistration(); if(r){ await r.update(); if(r.waiting) r.waiting.postMessage("capNhat"); } }catch(e){}
+  try{ const c = await caches.keys(); const sc = location.origin + location.pathname.replace(/[^/]*$/, ""); await Promise.all(c.filter(k => k.indexOf("vo-") === 0 && k.slice(-sc.length) === sc).map(k => caches.delete(k))); }catch(e){}
+  setTimeout(() => { try{ location.reload(); }catch(e){} }, 300);
+}
+
+/* ─────────── HỘP THOẠI CHUNG ─────────── */
+function moMask(html, k){
+  dongMask();
+  const d = document.createElement("div"); d.id = "gnp-mask"; d.setAttribute("data-k", k || "");
+  d.innerHTML = '<div class="gnp-c" role="dialog" aria-modal="true">' + html + "</div>";
+  d.addEventListener("keydown", e => e.stopPropagation());
+  document.body.appendChild(d);
+  d.addEventListener("click", e => { if(e.target === d && k !== "tin") dongMask(); });
+  return d;
+}
+function dongMask(){ const e = $("#gnp-mask"); if(e){ e.remove(); if(HT.huy){ try{ HT.huy(); }catch(x){} HT.huy = null; }
+  setTimeout(() => { if(!$("#gnp-mask")) xuLyTuXa(); }, 0); } }   /* tin / trả lời đến lúc hộp thoại đang mở ⇒ đóng xong hiện liền */
+
+/* ─────────── ĐỔI MẬT KHẨU ─────────── */
+function moDoiMK(){
+  moMask('<div class="gnp-hd"><b>🔑 Đổi mật khẩu</b><button type="button" class="gnp-xb" data-gnp="dongmask" aria-label="Đóng">✕</button></div>'
+    + '<div class="gnp-f"><label for="gnp-mk0">Mật khẩu đang dùng</label><input id="gnp-mk0" type="password" autocomplete="current-password"></div>'
+    + '<div class="gnp-f"><label for="gnp-mk1">Mật khẩu mới (từ 6 ký tự)</label><input id="gnp-mk1" type="password" autocomplete="new-password"></div>'
+    + '<div class="gnp-f"><label for="gnp-mk2">Gõ lại mật khẩu mới</label><input id="gnp-mk2" type="password" autocomplete="new-password"></div>'
+    + '<button type="button" class="gnp-b pri" data-gnp="luumk">Lưu mật khẩu mới</button>', "dmk");
+}
+async function luuMK(btn){
+  const u = auth.currentUser; if(!u) return;
+  const a = String(($("#gnp-mk0") || {}).value || ""), b = String(($("#gnp-mk1") || {}).value || ""), c = String(($("#gnp-mk2") || {}).value || "");
+  if(!a) return toast("Gõ mật khẩu đang dùng");
+  if(b.length < 6) return toast("Mật khẩu mới cần từ 6 ký tự");
+  if(b !== c) return toast("Hai lần gõ mật khẩu mới không giống nhau");
+  btn.disabled = true; btn.textContent = "Đang lưu…";
+  try{ await reauthenticateWithCredential(u, EmailAuthProvider.credential(u.email, a)); await updatePassword(u, b); dongMask(); toast("✅ Đã đổi mật khẩu", 4000); }
+  catch(e){ btn.disabled = false; btn.textContent = "Lưu mật khẩu mới";
+    toast(e && (e.code === "auth/wrong-password" || e.code === "auth/invalid-credential") ? "Mật khẩu đang dùng không đúng" : loiAuth(e), 4500); }
+}
+
+/* ─────────── HỘP THƯ HỖ TRỢ (hotro — y khuôn Sổ Nợ, Quản Trị trả lời) ─────────── */
+const HT = { ds:[], tid:"", tin:[], huy:null, loi:"", bao:"", dang:false };
+function moTaLoiHT(e){
+  const c = String((e && e.code) || ""), m = String((e && e.message) || e || "");
+  if(/permission-denied/.test(c)) return "Hộp thư chưa mở trên máy chủ. Gấp thì gọi " + hotTxt() + ".";
+  if(/unavailable|network|offline/i.test(c + m) || navigator.onLine === false) return "Máy đang mất mạng — có mạng lại rồi thử lại nhé.";
+  return "Chưa gửi / tải được (" + (c || m).slice(0, 60) + "). Gấp thì gọi " + hotTxt() + ".";
+}
+function hopDen(){
+  try{
+    const st = stHienTai(), nl = LS(K.nlApp, null) || {}, dan = LS(K.dan, []);
+    return JSON.stringify({ app:APP, build:APP_VER, cg:String(window.CG_VER || ""), cong:G.cong, st:moTaTK(st),
+      on:navigator.onLine !== false, ngoai:G.ngoaiTuyen, cai:daCai(), w:innerWidth, h:innerHeight, may:maMay(),
+      soDan:Array.isArray(dan) ? dan.length : 0, nl:{ bat:!!nl.bat, gio:nl.gio, so:nl.so, loi:String(nl.loi || "").slice(0, 120) },
+      loi:(window.__GNP_LOI || []).slice(-5), ua:String(navigator.userAgent || "").slice(0, 200) }).slice(0, 3900);
+  }catch(e){ return ""; }
+}
+async function moHopThu(){
+  if(!G.u) return;
+  moMask('<div class="gnp-hd"><b>💬 Hỏi · báo lỗi cho chủ phần mềm</b><button type="button" class="gnp-xb" data-gnp="dongmask" aria-label="Đóng">✕</button></div>'
+    + '<div class="gnp-htb" id="gnp-htb"><p class="gnp-mo">Đang tải…</p></div><div id="gnp-htf"></div>', "ht");
+  HT.tid = ""; HT.ds = []; HT.loi = ""; HT.bao = "";
+  try{
+    const s = await getDocs(query(collection(db, "hotro"), where("uid", "==", G.u.uid), limit(30)));
+    s.forEach(x => { const o = x.data() || {}; o.id = x.id; HT.ds.push(o); });
+    HT.ds.sort((a, b) => msOf(b.cap) - msOf(a.cap));
+  }catch(e){ HT.loi = moTaLoiHT(e); }
+  if(!$("#gnp-htb")) return;
+  const h = G.acc && G.acc.remote && G.acc.remote.hotro;
+  if(h && h.id && coTraLoi() && HT.ds.some(x => x.id === h.id)) return moCuoc(h.id);
+  veDsHT();
+}
+function veDsHT(){
+  const b = $("#gnp-htb"), f = $("#gnp-htf"); if(!b || !f) return;
+  HT.tid = ""; if(HT.huy){ try{ HT.huy(); }catch(x){} HT.huy = null; }
+  if(!HT.ds.length && !HT.loi) return veMoiHT();
+  b.innerHTML = (HT.loi ? '<div class="gnp-bao x">' + esc(HT.loi) + "</div>" : "")
+    + HT.ds.map(t => '<div class="gnp-ve' + (t.moiQT ? " moi" : "") + '" data-gnp="mocuoc" data-id="' + esc(t.id) + '"><b>' + esc(t.tieuDe || "(không tiêu đề)")
+      + (t.moiQT ? " · 💬 có trả lời" : (t.tt === "xong" ? " · ✅ xong" : "")) + "</b><small>" + esc(ngayVN(msOf(t.cap))) + " · " + (Number(t.n) || 1) + " tin</small></div>").join("");
+  f.innerHTML = '<button type="button" class="gnp-b pri" data-gnp="htmoi">＋ Gửi câu hỏi mới</button>' + '<a class="gnp-b" href="tel:' + hotline() + '">📞 Gọi ' + hotTxt() + "</a>";
+}
+function veMoiHT(giu){
+  const b = $("#gnp-htb"), f = $("#gnp-htf"); if(!b || !f) return;
+  HT.tid = ""; if(HT.huy){ try{ HT.huy(); }catch(x){} HT.huy = null; }
+  b.innerHTML = (HT.loi ? '<div class="gnp-bao x">' + esc(HT.loi) + "</div>" : "")
+    + '<p class="gnp-hint" style="margin-top:0">Viết rõ bạn cần gì (vd: <i>"đã chuyển khoản gia hạn mà app chưa mở"</i>, <i>"không nhận được thông báo nhắc lịch"</i>). App tự gửi kèm số bản và tình trạng tài khoản — <b>không gửi</b> đàn gà hay phiếu cân.</p>';
+  f.innerHTML = '<div class="gnp-f"><textarea id="gnp-noi" rows="4" maxlength="1500" placeholder="Bạn cần hỏi gì?"></textarea></div>'
+    + '<button type="button" class="gnp-b pri" data-gnp="htgui">📨 Gửi cho chủ phần mềm</button>'
+    + (HT.ds.length ? '<button type="button" class="gnp-b" data-gnp="htds">← Các tin đã gửi</button>' : "") + '<a class="gnp-b" href="tel:' + hotline() + '">📞 Gọi ' + hotTxt() + "</a>";
+  const ta = $("#gnp-noi"); if(ta && giu) ta.value = giu;
+}
+function moCuoc(tid){
+  const b = $("#gnp-htb"), f = $("#gnp-htf"); if(!b || !f) return;
+  if(HT.huy){ try{ HT.huy(); }catch(x){} HT.huy = null; }
+  HT.tid = tid; HT.tin = []; HT.loi = "";
+  b.innerHTML = '<p class="gnp-mo">Đang tải…</p>';
+  f.innerHTML = '<div class="gnp-f"><textarea id="gnp-noi" rows="3" maxlength="1500" placeholder="Nhắn thêm cho chủ phần mềm…"></textarea></div>'
+    + '<button type="button" class="gnp-b pri" data-gnp="htgui">📨 Gửi</button><button type="button" class="gnp-b" data-gnp="htds">← Các tin đã gửi</button>';
+  HT.huy = onSnapshot(query(collection(db, "hotro", tid, "tin"), orderBy("at", "asc"), limit(200)), s => {
+    HT.tin = []; s.forEach(x => { const o = x.data() || {}; o.id = x.id; HT.tin.push(o); });
+    if(HT.tid === tid) veCuoc();
+  }, e => { HT.loi = moTaLoiHT(e); if(HT.tid === tid) veCuoc(); });
+  const t = HT.ds.find(x => x.id === tid);
+  if(t && t.moiQT) updateDoc(doc(db, "hotro", tid), { moiQT:false }).then(() => { t.moiQT = false; }).catch(() => {});
+  daXemTraLoi(); xoaThanh("ht");
+}
+function veCuoc(){
+  const b = $("#gnp-htb"); if(!b) return;
+  const t = HT.ds.find(x => x.id === HT.tid);
+  let h = (HT.loi ? '<div class="gnp-bao x">' + esc(HT.loi) + "</div>" : "") + (HT.bao ? '<div class="gnp-bao ok">' + esc(HT.bao) + "</div>" : "");
+  if(t && t.tt === "xong") h += '<div class="gnp-bao ok">✅ Chủ phần mềm đã đánh dấu xong. Còn vướng thì nhắn thêm bên dưới.</div>';
+  h += HT.tin.map(m => { const q = m.tu === "qt";
+    return '<div class="gnp-bb ' + (q ? "gnp-bq" : "gnp-bk") + '">' + (q ? "<b>🧑‍💼 Chủ phần mềm</b>\n" : "") + esc(m.noi || "") + "<small>" + esc(ngayVN(msOf(m.at) || Date.now())) + "</small></div>"; }).join("")
+    || '<p class="gnp-mo">Chưa có tin nhắn.</p>';
+  b.innerHTML = h; b.scrollTop = b.scrollHeight;
+}
+async function guiHT(btn){
+  if(HT.dang || !G.u) return;
+  const ta = $("#gnp-noi"); let noi = String((ta && ta.value) || "").trim();
+  if(!noi){ if(ta) ta.focus(); return; }
+  noi = noi.slice(0, 1500);
+  const u = G.u, tid = HT.tid;
+  HT.dang = true; HT.loi = ""; HT.bao = ""; if(btn){ btn.disabled = true; btn.textContent = "Đang gửi…"; }
+  try{
+    const bt = writeBatch(db), tin = { tu:"k", noi, at:serverTimestamp(), nguoi:u.uid, build:APP_VER, hd:hopDen() };
+    let id = tid;
+    if(!tid){
+      const tRef = doc(collection(db, "hotro")); id = tRef.id;
+      bt.set(tRef, { uid:u.uid, tu:u.uid, email:String(u.email || "").slice(0, 120), ten:String(u.email || "").split("@")[0].slice(0, 80),
+        tieuDe:("[Gà Nòi QT] " + noi.replace(/\s+/g, " ")).slice(0, 120), tt:"mo", moiKhach:true, moiQT:false,
+        cap:serverTimestamp(), tao:serverTimestamp(), n:1, build:APP_VER });
+      bt.set(doc(collection(db, "hotro", id, "tin")), tin);
+    }else{
+      bt.set(doc(collection(db, "hotro", tid, "tin")), tin);
+      bt.update(doc(db, "hotro", tid), { moiKhach:true, moiQT:false, tt:"mo", cap:serverTimestamp(), n:increment(1) });
+    }
+    await bt.commit();
+    HT.dang = false; if(ta) ta.value = "";
+    if(!tid){
+      HT.ds.unshift({ id, tieuDe:("[Gà Nòi QT] " + noi).slice(0, 120), tt:"mo", moiQT:false, cap:Date.now(), n:1 });
+      HT.bao = "✅ Đã gửi — chủ phần mềm trả lời ở ngay đây, app sẽ báo khi có trả lời.";
+      moCuoc(id);
+    }else{ const t = HT.ds.find(x => x.id === tid); if(t){ t.tt = "mo"; t.moiQT = false; } if(btn){ btn.disabled = false; btn.textContent = "📨 Gửi"; } }
+  }catch(e){
+    HT.dang = false; HT.loi = moTaLoiHT(e);
+    if(btn){ btn.disabled = false; btn.textContent = tid ? "📨 Gửi" : "📨 Gửi cho chủ phần mềm"; }
+    if(!tid) veMoiHT(noi); else veCuoc();
+  }
+}
+
+/* ─────────── THANH "TÀI KHOẢN" ĐẦU APP (dưới dòng tiêu đề) + HỘP THOẠI TÀI KHOẢN ─────────── */
+function chenThanhTK(){
+  if($("#gnp-acc")) return;
+  const d = document.createElement("div"); d.id = "gnp-acc"; d.hidden = true;
+  const sub = document.querySelector(".wrap > .subtitle");
+  if(sub && sub.parentNode) sub.parentNode.insertBefore(d, sub.nextSibling);
+  else{ const w = document.querySelector(".wrap"); if(w) w.insertBefore(d, w.firstChild); else document.body.appendChild(d); }
+}
+function htmlTK(){
+  const u = G.u; if(!u) return "";
+  const st = stHienTai(), ad = st && st.ma === "admin";
+  return '<div class="gnp-hd"><b>👤 Tài khoản Gà Nòi QT' + (coTraLoi() ? ' <span class="gnp-cham">● có trả lời</span>' : "") + '</b><button type="button" class="gnp-xb" data-gnp="dongmask" aria-label="Đóng">✕</button></div>'
+    + '<div class="gnp-card" style="margin-top:0">' + kv("Email", u.email || "") + kv("Hạn dùng", moTaTK(st)) + "</div>"
+    + (G.ngoaiTuyen ? '<div class="gnp-bao v">Đang mất mạng — hạn dùng lấy theo lần kiểm tra trước.</div>' : "")
+    + (ad ? "" : '<button type="button" class="gnp-b pri" data-gnp="giahan">💳 Gia hạn · mua gói</button>')
+    + '<button type="button" class="gnp-b" data-gnp="hotro">💬 Nhắn chủ phần mềm' + (coTraLoi() ? " · có trả lời mới" : "") + "</button>"
+    + '<div class="gnp-2"><button type="button" class="gnp-b" data-gnp="doimk">🔑 Đổi mật khẩu</button><button type="button" class="gnp-b" data-gnp="thoat">Đăng xuất</button></div>'
+    + (window.__gnpCai && !daCai() ? '<button type="button" class="gnp-b" data-gnp="cai">📲 Cài app vào màn hình chính</button>' : "")
+    + huongDan(false)
+    + '<p class="gnp-hint" style="text-align:center;margin-bottom:0">Hỗ trợ: <a href="tel:' + hotline() + '">📞 ' + hotTxt() + "</a> · Bản " + APP_VER + "</p>";
+}
+function veTheTK(){
+  try{
+    let el = $("#gnp-acc");
+    if(!el){ chenThanhTK(); el = $("#gnp-acc"); }
+    if(el){
+      const u = G.u;
+      if(!u){ el.hidden = true; el.innerHTML = ""; }
+      else{
+        const st = stHienTai();
+        const sap = !G.mienPhi && !!st && ((st.ma === "tra" && st.con <= 7) || (st.ma === "thu" && st.con <= 3));
+        el.className = (sap || G.ngoaiTuyen) ? "sap" : "";
+        el.innerHTML = '<div class="t"><b>👤 ' + esc(u.email || "") + "</b><span>" + esc(moTaTK(st)) + (G.ngoaiTuyen ? " · đang mất mạng" : "")
+          + (coTraLoi() ? " · 💬 có trả lời" : "") + "</span></div>" + '<button type="button" data-gnp="taikhoan">TÀI KHOẢN</button>';
+        el.hidden = false;
+      }
+    }
+    const mk = $("#gnp-mask");
+    if(mk && mk.getAttribute("data-k") === "tk"){
+      const c = mk.querySelector(".gnp-c");
+      if(c){
+        if(!G.u){ dongMask(); return; }
+        const sc = c.scrollTop, mo = Array.from(c.querySelectorAll("details")).map(d => d.open);
+        c.innerHTML = htmlTK();
+        c.querySelectorAll("details").forEach((d, i) => { if(mo[i]) d.open = true; });
+        c.scrollTop = sc;
+      }
+    }
+  }catch(e){}
+}
+
+/* ─────────── BẤM NÚT (một bộ nghe cho cả cổng, hộp thoại, thanh tài khoản) ─────────── */
+document.addEventListener("click", e => {
+  const b = e.target && e.target.closest ? e.target.closest("[data-gnp]") : null; if(!b) return;
+  const a = b.getAttribute("data-gnp");
+  if(a === "tabin" || a === "tabup"){ const em = String(($("#gnp-em") || {}).value || ""); G.dnMode = a === "tabup" ? "up" : "in"; hienDangNhap(); const x = $("#gnp-em"); if(x) x.value = em; return; }
+  if(a === "go") return bamDangNhap(b);
+  if(a === "quen") return bamQuenMK();
+  if(a === "thoat"){ if(confirm("Đăng xuất khỏi tài khoản " + (G.u ? G.u.email : "") + "?\n\nDữ liệu đàn gà, phiếu cân vẫn nằm trên máy này.")){ dongMask(); dangXuat(); } return; }
+  if(a === "taikhoan"){ if(G.u) moMask(htmlTK(), "tk"); return; }
+  if(a === "giahan"){ dongMask(); return hienGiaHan(ST.con(stHienTai())); }
+  if(a === "dong"){ if(ST.con(stHienTai())){ G.tuNguyen = false; dongCong(); } else danhGia(); return; }
+  if(a === "thang"){ G.thang = Number(b.getAttribute("data-m")) || 1; return veGiaHan(); }
+  if(a === "dack") return ghiDon(true);
+  if(a === "kiemtra") return kiemTraLai(b);
+  if(a === "chep"){ const v = b.getAttribute("data-v") || ""; try{ navigator.clipboard.writeText(v).then(() => toast("Đã chép: " + v), () => toast(v)); }catch(x){ toast(v); } return; }
+  if(a === "hotro") return moHopThu();
+  if(a === "dongmask") return dongMask();
+  if(a === "daxemtin"){ const v = docXem(); v.msg = b.getAttribute("data-id"); ghiXem(v); return dongMask(); }
+  if(a === "doimk") return moDoiMK();
+  if(a === "luumk") return luuMK(b);
+  if(a === "daxm") return bamDaXacMinh(b);
+  if(a === "guixm") return bamGuiLaiXM();
+  if(a === "thulai"){ try{ location.reload(); }catch(x){} return; }
+  if(a === "cai"){ const p = window.__gnpCai; if(!p) return; try{ p.prompt(); p.userChoice.then(() => { window.__gnpCai = null; veTheTK(); veNutCai(); }, () => {}); }catch(x){ window.__gnpCai = null; veTheTK(); veNutCai(); } return; }
+  if(a === "mocuoc") return moCuoc(b.getAttribute("data-id"));
+  if(a === "htmoi") return veMoiHT();
+  if(a === "htds") return veDsHT();
+  if(a === "htgui") return guiHT(b);
+}, false);
+/* Chrome báo "cài được app" bất chợt (có khi đúng lúc khách đang gõ mật khẩu) ⇒ CHỈ vẽ lại ô nút cài, không vẽ lại cả màn đăng nhập (giữ chữ đã gõ + con trỏ) */
+function veNutCai(){ const w = $("#gnp-caiw"); if(w) w.innerHTML = nutCai(); }
+document.addEventListener("gnp-cai", () => { veNutCai(); veTheTK(); });
+
+/* ─────────── KHỞI ĐỘNG ─────────── */
+function batDau(u){
+  if(G.batDau === u || G.u !== u) return;
+  G.batDau = u;
+  if(!(window.__gnpMoNhanh === u.uid && !congMo())) moCong(veCho("Đang kiểm tra tài khoản…"), "cho");
+  veTheTK();
+  ngheLic(); ngheAcc(); kiemGio();
+}
+chenThanhTK();
+onAuthStateChanged(auth, u => {
+  dungNghe();
+  G.authXong = true;
+  G.ln = undefined; G.lnMC = false; G.acc = null; G.thuXong = false; G.thuLy = ""; G.dangThu = false; G.daBaoCK = false;
+  G.donCuoi = ""; G.daTaoAcc = false; G.dx = false; G.ngoaiTuyen = false; G.mienPhi = false; G.nlGoi = "";
+  G.ad = undefined; G.adXong = false; G.adP = null; G.batDau = null;
+  if(!u){
+    if(G.mo) dongCanGa();
+    G.mo = false; G.u = null; window.__ERR_UID = ""; G.dnMode = "in"; xoaThanh(); dongMask(); veTheTK(); hienDangNhap(); nlSoat(); return;
+  }
+  G.mo = false;
+  G.u = u; window.__ERR_UID = u.uid;
+  const gp = LS(K.gp, null);
+  if(gp && gp.uid !== u.uid) xoaGP();
+  G.ver = (gp && gp.uid === u.uid && Number(gp.ver)) || 0;
+  napBill().then(() => { if(G.u === u){ veTheTK(); nlSoat(); } });
+  /* lần trước máy chủ đã xác nhận là chủ phần mềm ⇒ mở ngay, vẫn hỏi lại máy chủ ở dưới */
+  const chuCu = !!(gp && gp.uid === u.uid && gp.admin === true);
+  if(chuCu){ G.ad = true; G.adXong = true; }
+  G.adP = kiemChu(u).then(v => {
+    if(G.u !== u) return v;
+    if(G.ad === true){ dungNghe(); G.ln = undefined; luuGP(); moApp({ ma:"admin" }, true); return v; }
+    if(G.ad === false){ ghiMay(u.uid); if(chuCu) xoaGP(); }   /* chỉ ghi máy cho tài khoản KHÁCH (chủ phần mềm mở máy khách để hỗ trợ không làm khách mất dùng thử) */
+    batDau(u);
+    danhGia();
+    return v;
+  });
+  if(chuCu){ luuGP(); moApp({ ma:"admin" }, true); return; }
+  batDau(u);
+});
+document.addEventListener("visibilitychange", () => {
+  if(document.hidden || !G.u) return;
+  danhGia();
+  if(Date.now() - (G.lucGio || 0) > H3) kiemGio();
+});
+setInterval(() => { if(!document.hidden && G.u){ danhGia(); if(Date.now() - (G.lucGio || 0) > H3) kiemGio(); } }, 5 * 60000);
+</script>
+<!-- ===== BỘ THU LỖI · tự chạy, không đụng code cũ · app=ganoi ===== -->
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+const APP_ID = "ganoi", APP_VERSION = "2026-11-19-GNP3";   /* = APP_VER của cổng tài khoản (số bản app Quản Trị đọc) */
+const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
+  projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
+  messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
+if (!window.__ERR_LOG__) {
+  window.__ERR_LOG__ = true;
+  let db = null;
+  /* Rules yêu cầu request.auth != null khi ghi error_logs (chặn kẻ lạ đốt quota ghi).
+     Nên DÙNG LẠI app CHÍNH (cùng projectId) vì nó mang sẵn phiên đăng nhập -> request.auth có thật, log ghi được bình thường.
+     Không tìm thấy app cùng project thì mới tạo instance riêng (đường lùi). */
+  try {
+    const chung = getApps().find(x => ((x.options || {}).projectId) === FB.projectId);
+    const a = chung || (getApps().some(x => x.name === "errlog") ? getApp("errlog") : initializeApp(FB, "errlog"));
+    db = getFirestore(a);
+  } catch (_) {}
+  const seen = new Set(); let sent = 0; const MAX = 25;
+  const cut = (s, n) => String(s == null ? "" : s).slice(0, n);
+  function send(type, d) {
+    try {
+      if (!db || sent >= MAX) return;
+      const src = cut((d.source || location.pathname || "").split("?")[0], 300);
+      const msg = cut(d.message, 480);
+      const key = type + "|" + msg + "|" + src + "|" + (d.line || "");
+      if (seen.has(key)) return; seen.add(key); sent++;
+      try { (window.__GNP_LOI = window.__GNP_LOI || []).push(cut(type + ": " + msg, 160)); if (window.__GNP_LOI.length > 8) window.__GNP_LOI.shift(); } catch (_) {}
+      const rec = { app: APP_ID, version: APP_VERSION, type, message: msg, stack: cut(d.stack, 1800),
+        source: src, path: cut(location.pathname, 200), ua: cut(navigator.userAgent, 300),
+        resolved: false, ts: serverTimestamp(), tsClient: Date.now(), build: APP_VERSION };
+      if (d.line != null && isFinite(d.line)) rec.line = d.line | 0;
+      if (d.col  != null && isFinite(d.col))  rec.col  = d.col | 0;
+      if (window.__ERR_UID) rec.uid = cut(window.__ERR_UID, 80);
+      addDoc(collection(db, "error_logs"), rec).catch(() => {});
+    } catch (_) {}
+  }
+  /* ===== LỌC NHIỄU NGOÀI — mã do trình duyệt-trong-app (Zalo/FB/TikTok/Messenger…) hoặc tiện ích tự chèn vào trang.
+     Lỗi thật của app KHÔNG chứa các dấu hiệu này nên vẫn được ghi. */
+  var _RE_NGOAI = /zalojsv2|zalojavascriptinterface|zalojs|jsbridge|fbquacamera|fb_?native|fb_?iab|reactnativewebview|webkit\.messagehandlers|__gcrweb|instantsearchsdkjsbridge|resizeobserver loop|failed to (?:register|update|install) a serviceworker|when fetching the script|-extension:\/\//i;
+  function _nhieuNgoai(msg, stk){
+    var s = ((msg == null ? "" : msg) + " " + (stk == null ? "" : stk)).toLowerCase();
+    if (_RE_NGOAI.test(s)) return true;
+    if (/<anonymous>:1:\d+/.test(stk == null ? "" : stk) && s.indexOf(".html") < 0 && s.indexOf(".js") < 0) return true;
+    return false;
+  }
+  addEventListener("error", function (e) {
+    const t = e.target;
+    if (t && t !== window && (t.src || t.href)) { send("resource", { message: "Tải hỏng: " + (t.src || t.href), source: (t.tagName || "") + "" }); return; }
+    var stk = (e.error && e.error.stack) || "";
+    if (e.message === "Script error." || _nhieuNgoai(e.message, stk)) return;
+    send("js", { message: e.message, stack: stk, source: e.filename, line: e.lineno, col: e.colno });
+  }, true);
+  addEventListener("unhandledrejection", function (e) {
+    const r = e.reason || {};
+    if (_nhieuNgoai((r && r.message) || String(r), r && r.stack)) return;
+    send("promise", { message: (r && r.message) || String(r), stack: r && r.stack });
+  });
+  window.baoLoi = (err, ghiChu) => send("manual", { message: (ghiChu ? ghiChu + ": " : "") + ((err && err.message) || String(err)), stack: err && err.stack });
+}
+</script>
+<!-- ===== HẾT PHẦN TÀI KHOẢN GÀ NÒI QT BẢN BÁN [GNP3] ===== -->
 </body>
 </html>
