@@ -120,7 +120,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 .pwa-ok:active{transform:scale(.98)}
 </style>
 <style id="gnp-css">
-/* ═════ [GNP7] GÀ NÒI QT BẢN BÁN — cổng tài khoản (đăng nhập · dùng thử · gia hạn) · màu theo app (nền tối, cam) ═════ */
+/* ═════ [GNP8] GÀ NÒI QT BẢN BÁN — cổng tài khoản (đăng nhập · dùng thử · gia hạn) · màu theo app (nền tối, cam) ═════ */
 #gnp-gate,#gnp-mask,#gnp-bar,#gnp-toast,#gnp-acc{--g-bg:#0A0A0F;--g-sf:#13131C;--g-sf2:#1B1B27;--g-ln:#2C2C3B;--g-ink:#F2F2F6;--g-mu:#9C9CAD;--g-ac:#FF4500;--g-ac2:#FF8C00;--g-ok:#22C55E;--g-vg:#FFB347;--g-do:#EF4444}
 #gnp-gate{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2147483000;background:var(--g-bg);color:var(--g-ink);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;font-family:system-ui,sans-serif;font-size:15px;line-height:1.45;text-align:left}
 #gnp-gate.gnp-on{display:block}
@@ -209,7 +209,7 @@ input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;}
 </style>
 </head>
 <body>
-<!-- ═════ [GNP7] GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN: che app cho tới khi biết chắc tài khoản còn hạn ═════ -->
+<!-- ═════ [GNP8] GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN: che app cho tới khi biết chắc tài khoản còn hạn ═════ -->
 <div id="gnp-gate" class="gnp-on" role="dialog" aria-modal="true" aria-label="Tài khoản Gà Nòi QT"><div class="gnp-box"><div class="gnp-logo">GÀ NÒI <i>QT</i></div><div id="gnp-body"><p class="gnp-mo">Đang mở…</p></div></div></div>
 <script>(function(){
   'use strict';
@@ -4058,6 +4058,7 @@ if (standalone()){ hideBar(); }
      • Bảng ⚙ THÔNG BÁO: bật / tắt, giờ báo (mặc định 18:00 tối hôm trước), gửi thử, xem trước 7 ngày, cách dùng.
      • [NL4] Xem thông báo NGÀY BẤT KỲ: nút 📅 dưới khung NGÀY MAI + mục cùng tên trong bảng ⚙ (chọn ngày · ◀ ▶ · hôm nay / ngày mai · ngày tuổi N) — chỉ xem, không gửi gì.
      • [NL5] Mục ngày bất kỳ CHỮ TO, nút to (máy đặt cỡ chữ lớn tới 200% vẫn không tràn) — chỉ mục này, khung 7 ngày giữ nguyên.
+     • [NL6] CHỮ TO cho TOÀN phần thông báo: khung NGÀY MAI LÀM GÌ + cả bảng ⚙ (7 ngày tới, trạng thái, nút, giờ báo, hướng dẫn) — chỉ 1 khối CSS cuối, JS không đổi.
      • Báo cả khi đã TẮT HẲN app: máy chủ "nhaclich" (Cloud Functions so-no-cc57a) + tệp nhaclich-sw.js đặt CẠNH index.html.
      • Liều lấy từ chính bảng thuốc của Máy tính liều PRO (khung calcProFrame): đổi liều ở máy tính thì thông báo đổi theo.
      • Chỉ bọc saveFlocksArr để biết đàn vừa đổi. Khối này lỗi thì app chạy y như cũ. ===== -->
@@ -4142,6 +4143,47 @@ if (standalone()){ hideBar(); }
 #nlXN .nl-nho{font-size:15.5px;color:#c4c4ce;line-height:1.6}
 #nlXN .nl-xb .nl-l{font-size:17px;line-height:1.6;color:#eeeef4}
 #nlXN .nl-xb .nl-nho{font-size:15.5px;color:#c0c0cb}
+/* [NL6] CHỮ TO CHO TOÀN PHẦN THÔNG BÁO — khung 🔔 NGÀY MAI LÀM GÌ + bảng ⚙ THÔNG BÁO (7 ngày tới · ngày bất kỳ · trạng thái · nút · giờ báo · hướng dẫn).
+   Chỉ đè cỡ chữ / xuống dòng, đặt cuối khối nên thắng quy tắc cũ cùng độ ưu tiên; gỡ khối này là về y hệt NL5.
+   Dòng thuốc Sáng/Chiều 19px · tên đàn 20px · dòng tiêu đề tin 15,5px · ghi chú / cân / lý do 16,5px. Máy đặt cỡ chữ lớn (tới 200%): mọi hàng tự xuống dòng, không tràn. */
+.nl-hd{flex-wrap:wrap}
+.nl-ttl{font-size:15px;letter-spacing:.8px}
+.nl-cai{font-size:13.5px;padding:8px 12px}
+.nl-cn{font-size:20px;line-height:1.35;white-space:normal;overflow-wrap:anywhere}
+.nl-cs{font-size:15px;letter-spacing:.3px;line-height:1.4;margin:4px 0 6px}
+.nl-card .nl-l{font-size:19px;line-height:1.55;color:#eeeef4}
+.nl-card .nl-nho{font-size:16.5px;color:#c4c4ce}
+.nl-xem{font-size:13px;color:#8a8a96;margin-top:6px}
+.nl-empty{font-size:16px;color:#a8a8b2}
+.nl-moi{font-size:16px;line-height:1.5}
+.nl-moi button{font-size:16px;padding:10px 14px}
+.nl-ph{font-size:18px;line-height:1.35}
+.nl-psub{font-size:15.5px;color:#b4b4c0}
+.nl-tt{font-size:16px}
+.nl-b{font-size:16px;letter-spacing:0;line-height:1.3}
+.nl-gr{flex-wrap:wrap}
+.nl-gr label{font-size:14.5px;color:#b0b0bc}
+#nlGio{font-size:18px;max-width:100%}
+.nl-sec{font-size:15px;letter-spacing:.5px;line-height:1.4}
+.nl-xt{max-height:60vh}
+.nl-xd{font-size:20px;line-height:1.35;margin:10px 0 4px;overflow-wrap:anywhere}
+.nl-xi{padding:8px 0 10px}
+.nl-xg{font-size:15.5px;line-height:1.45;letter-spacing:.2px;margin-bottom:6px;overflow-wrap:anywhere}
+.nl-xt .nl-nho{font-size:16.5px;color:#c4c4ce;line-height:1.55}
+.nl-xt .nl-xb .nl-l{font-size:19px;line-height:1.55;color:#eeeef4}
+.nl-xt .nl-xb .nl-nho{font-size:16.5px;color:#c0c0cb}
+.nl-hdan{font-size:15.5px}
+.nl-ver{font-size:11.5px;color:#6a6a74}
+.nl-ok{font-size:16px}
+.nl-nkb{font-size:16px}
+#nlNkSec{font-size:15px}
+.nl-nkt{font-size:16.5px}
+.nl-nkt b{font-size:18px}
+#nlXN .nl-xd{font-size:20px}
+#nlXN .nl-xg{font-size:15.5px}
+#nlXN .nl-nho{font-size:16.5px}
+#nlXN .nl-xb .nl-l{font-size:19px;line-height:1.55}
+#nlXN .nl-xb .nl-nho{font-size:16.5px}
 </style>
 <script>
 (function(){
@@ -4318,7 +4360,7 @@ var NLC = (function(){
 })();
 
 /* ---------- [NL1] GIAO DIỆN + THÔNG BÁO ĐẨY ---------- */
-var NL_VER   = '2026-11-20-NL5';
+var NL_VER   = '2026-11-20-NL6';
 /* [NL2] Kho "firebase-messaging-database" trong trình duyệt là CHUNG cả tên miền github.io (Sổ Nợ, Quản Trị, Gà Nòi…):
    Firebase 12.x (app Quản Trị) nâng kho lên bản 2; Firebase 10.12.0 (Sổ Nợ, Gà Nòi NL1) chỉ mở được bản 1
    ⇒ máy đã mở Quản Trị thì báo "The requested version (1) is less than the existing version (2)".
@@ -5017,10 +5059,10 @@ if(D.readyState === 'loading') D.addEventListener('DOMContentLoaded', khoiDong);
 </script>
 <!-- ===== HẾT PHẦN NHẮC LỊCH ===== -->
 
-<!-- ═════ [GNP7] GÀ NÒI QT BẢN BÁN — tài khoản · dùng thử · gia hạn · tin từ xa · hộp thư hỗ trợ (chỉ thêm, không sửa dòng nào của app) ═════ -->
+<!-- ═════ [GNP8] GÀ NÒI QT BẢN BÁN — tài khoản · dùng thử · gia hạn · tin từ xa · hộp thư hỗ trợ (chỉ thêm, không sửa dòng nào của app) ═════ -->
 <script type="module">
 /* ══════════════════════════════════════════════════════════════════════════════════════════
-   GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN (bản 2026-11-20-GNP7)
+   GÀ NÒI QT BẢN BÁN — CỔNG TÀI KHOẢN (bản 2026-11-20-GNP8)
    Ghép với app Quản Trị y như Sổ Nợ, Cân Gà Pro — chung Firebase so-no-cc57a:
      • Giấy phép   accounts/{uid}/lic/ganoi        (dùng thử tự mở · Quản Trị gia hạn / khoá / vĩnh viễn)
      • Khoá thử    trialKeys/{hộp thư thật}         (mỗi hộp thư dùng thử 1 lần — Rules VÁ LỖ Z3/Z6/Z7)
@@ -5042,7 +5084,7 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, serverTimesta
   from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 window.__gnpChay = true;
-const APP = "ganoi", TEN = "Gà Nòi QT", APP_VER = "2026-11-20-GNP7";
+const APP = "ganoi", TEN = "Gà Nòi QT", APP_VER = "2026-11-20-GNP8";
 const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
   projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
   messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
@@ -5981,7 +6023,7 @@ setInterval(() => { if(!document.hidden && G.u){ danhGia(); if(Date.now() - (G.l
 <script type="module">
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-const APP_ID = "ganoi", APP_VERSION = "2026-11-20-GNP7";   /* = APP_VER của cổng tài khoản (số bản app Quản Trị đọc) */
+const APP_ID = "ganoi", APP_VERSION = "2026-11-20-GNP8";   /* = APP_VER của cổng tài khoản (số bản app Quản Trị đọc) */
 const FB = { apiKey:"AIzaSyA_kjQ-CdASRkf50Glz3kQajlkD5qGWC4k", authDomain:"so-no-cc57a.firebaseapp.com",
   projectId:"so-no-cc57a", storageBucket:"so-no-cc57a.firebasestorage.app",
   messagingSenderId:"571694791559", appId:"1:571694791559:web:8e409728a520e2d370b122" };
@@ -6039,6 +6081,6 @@ if (!window.__ERR_LOG__) {
   window.baoLoi = (err, ghiChu) => send("manual", { message: (ghiChu ? ghiChu + ": " : "") + ((err && err.message) || String(err)), stack: err && err.stack });
 }
 </script>
-<!-- ===== HẾT PHẦN TÀI KHOẢN GÀ NÒI QT BẢN BÁN [GNP7] ===== -->
+<!-- ===== HẾT PHẦN TÀI KHOẢN GÀ NÒI QT BẢN BÁN [GNP8] ===== -->
 </body>
 </html>
